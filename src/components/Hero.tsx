@@ -37,9 +37,9 @@ const Hero = () => {
         />
       </div>
 
-      {/* Floating decorative elements */}
+      {/* Floating decorative elements - hidden on mobile for performance */}
       <motion.div
-        className="absolute top-20 right-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl"
+        className="hidden sm:block absolute top-20 right-10 md:right-20 w-32 md:w-64 h-32 md:h-64 rounded-full bg-primary/10 blur-3xl"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.5, 0.3],
@@ -49,7 +49,7 @@ const Hero = () => {
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-20 left-20 w-96 h-96 rounded-full bg-primary/5 blur-3xl"
+        className="hidden sm:block absolute bottom-20 left-10 md:left-20 w-48 md:w-96 h-48 md:h-96 rounded-full bg-primary/5 blur-3xl"
         animate={{
           scale: [1.2, 1, 1.2],
           opacity: [0.2, 0.4, 0.2],
@@ -59,7 +59,7 @@ const Hero = () => {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute top-1/2 left-1/4 w-32 h-32 rounded-full bg-primary/5 blur-2xl"
+        className="hidden md:block absolute top-1/2 left-1/4 w-32 h-32 rounded-full bg-primary/5 blur-2xl"
         animate={{
           scale: [1, 1.3, 1],
           opacity: [0.2, 0.5, 0.2],
@@ -67,11 +67,11 @@ const Hero = () => {
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       />
 
-      {/* Floating particles */}
+      {/* Floating particles - fewer on mobile */}
       {[...Array(8)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 bg-primary/20 rounded-full"
+          className={`absolute w-1.5 md:w-2 h-1.5 md:h-2 bg-primary/20 rounded-full ${i > 4 ? 'hidden sm:block' : ''}`}
           style={{
             top: `${15 + i * 10}%`,
             left: `${5 + i * 12}%`,
@@ -92,14 +92,14 @@ const Hero = () => {
 
       {/* Content */}
       <motion.div
-        className="relative z-10 container mx-auto px-4 text-center"
+        className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20 sm:pt-0"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <motion.div variants={itemVariants} className="mb-8">
+        <motion.div variants={itemVariants} className="mb-4 sm:mb-8">
           <motion.span
-            className="inline-block px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-medium mb-6"
+            className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/20 text-primary rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6"
             whileHover={{ scale: 1.05, backgroundColor: "rgba(212, 175, 55, 0.3)" }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -109,7 +109,7 @@ const Hero = () => {
 
         <motion.h1
           variants={itemVariants}
-          className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-secondary-foreground max-w-5xl mx-auto leading-tight mb-8"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-secondary-foreground max-w-5xl mx-auto leading-tight mb-4 sm:mb-6 lg:mb-8 px-2"
         >
           Your Wealth,{" "}
           <motion.span
@@ -123,7 +123,7 @@ const Hero = () => {
 
         <motion.p
           variants={itemVariants}
-          className="text-lg md:text-xl text-secondary-foreground/70 max-w-3xl mx-auto mb-12 font-light italic"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-secondary-foreground/70 max-w-xs sm:max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-10 lg:mb-12 font-light italic px-2"
         >
           "{quote}"
         </motion.p>
@@ -131,37 +131,37 @@ const Hero = () => {
         {/* Contact Info */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-wrap justify-center gap-8 mb-16"
+          className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16"
         >
           <motion.div
-            className="flex items-center gap-3 text-secondary-foreground/80 cursor-pointer group"
+            className="flex items-center justify-center gap-3 text-secondary-foreground/80 cursor-pointer group"
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             <motion.div
-              className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors"
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
             >
-              <MapPin className="w-5 h-5 text-primary" />
+              <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
             </motion.div>
-            <span className="text-sm group-hover:text-secondary-foreground transition-colors">Hyderabad & Vijayawada</span>
+            <span className="text-xs sm:text-sm group-hover:text-secondary-foreground transition-colors">Hyderabad & Vijayawada</span>
           </motion.div>
           <motion.div
-            className="flex items-center gap-3 text-secondary-foreground/80 cursor-pointer group"
+            className="flex items-center justify-center gap-3 text-secondary-foreground/80 cursor-pointer group"
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             <motion.div
-              className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors"
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
             >
-              <Phone className="w-5 h-5 text-primary" />
+              <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
             </motion.div>
-            <span className="text-sm group-hover:text-secondary-foreground transition-colors">+91 98660 52111</span>
+            <span className="text-xs sm:text-sm group-hover:text-secondary-foreground transition-colors">+91 98660 52111</span>
           </motion.div>
         </motion.div>
 
@@ -170,7 +170,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}

@@ -98,7 +98,7 @@ const WhyChooseUs = () => {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen py-24 lg:py-32 overflow-hidden"
+      className="relative min-h-screen py-16 sm:py-20 lg:py-32 overflow-hidden"
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
@@ -110,8 +110,8 @@ const WhyChooseUs = () => {
         <div className="absolute inset-0 bg-secondary/90" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-start">
           {/* Left Side - Features */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -123,10 +123,10 @@ const WhyChooseUs = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center gap-4 mb-4"
+              className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4"
             >
-              <div className="w-12 h-px bg-primary" />
-              <span className="text-primary text-sm font-medium tracking-wide">
+              <div className="w-8 sm:w-12 h-px bg-primary" />
+              <span className="text-primary text-xs sm:text-sm font-medium tracking-wide">
                 Professional and Experienced Financial Consultants
               </span>
             </motion.div>
@@ -135,13 +135,13 @@ const WhyChooseUs = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl lg:text-5xl font-heading font-bold text-secondary-foreground mb-12"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-secondary-foreground mb-6 sm:mb-8 lg:mb-12"
             >
               Why Choose Our Firm
             </motion.h2>
 
             {/* Features List */}
-            <div className="space-y-8">
+            <div className="space-y-4 sm:space-y-6 lg:space-y-8">
               {features.map((feature, index) => (
                 <motion.div
                   key={feature.number}
@@ -151,15 +151,15 @@ const WhyChooseUs = () => {
                   whileHover={{ x: 10 }}
                   className="group cursor-pointer"
                 >
-                  <div className="flex gap-6">
-                    <span className="text-primary/40 font-heading font-bold text-lg group-hover:text-primary transition-colors">
+                  <div className="flex gap-3 sm:gap-4 lg:gap-6">
+                    <span className="text-primary/40 font-heading font-bold text-base sm:text-lg group-hover:text-primary transition-colors flex-shrink-0">
                       {feature.number}
                     </span>
                     <div>
-                      <h3 className="text-xl font-heading font-bold text-secondary-foreground mb-2 group-hover:text-primary transition-colors">
+                      <h3 className="text-base sm:text-lg lg:text-xl font-heading font-bold text-secondary-foreground mb-1 sm:mb-2 group-hover:text-primary transition-colors">
                         {feature.title}
                       </h3>
-                      <p className="text-secondary-foreground/70 leading-relaxed">
+                      <p className="text-xs sm:text-sm lg:text-base text-secondary-foreground/70 leading-relaxed">
                         {feature.description}
                       </p>
                     </div>
@@ -174,9 +174,9 @@ const WhyChooseUs = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="lg:pl-12"
+            className="lg:pl-8 xl:pl-12"
           >
-            <div className="space-y-6">
+            <div className="grid grid-cols-2 lg:grid-cols-1 gap-3 sm:gap-4 lg:gap-6">
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
@@ -184,12 +184,12 @@ const WhyChooseUs = () => {
                   animate={isInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.9, y: 20 }}
                   transition={{ duration: 0.5, delay: 0.4 + index * 0.15 }}
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className="relative p-6 border border-secondary-foreground/10 rounded-lg bg-secondary/30 backdrop-blur-sm hover:border-primary/30 hover:bg-secondary/50 transition-all duration-300 cursor-pointer"
+                  className="relative p-3 sm:p-4 lg:p-6 border border-secondary-foreground/10 rounded-lg bg-secondary/30 backdrop-blur-sm hover:border-primary/30 hover:bg-secondary/50 transition-all duration-300 cursor-pointer"
                 >
-                  <h3 className="text-4xl lg:text-5xl font-heading font-bold text-secondary-foreground mb-2 text-center">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-heading font-bold text-secondary-foreground mb-1 sm:mb-2 text-center">
                     <AnimatedNumber value={stat.value} suffix={stat.suffix} isInView={isInView} />
                   </h3>
-                  <p className="text-primary text-center font-medium">
+                  <p className="text-primary text-center font-medium text-xs sm:text-sm lg:text-base">
                     {stat.label}
                   </p>
                 </motion.div>
