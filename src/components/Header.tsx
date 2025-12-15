@@ -9,6 +9,7 @@ const navItems = [
   { name: "Equity", href: "#services", isRoute: false },
   { name: "Investments", href: "#services", isRoute: false },
   { name: "Corporate Advisory", href: "#services", isRoute: false },
+  { name: "Media", href: "/media", isRoute: true },
   { name: "Contact", href: "/contact", isRoute: true },
 ];
 
