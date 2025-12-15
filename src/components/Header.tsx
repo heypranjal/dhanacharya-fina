@@ -1,14 +1,44 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 
-const navItems = [
-  { name: "About", href: "#about", isRoute: false },
-  { name: "Equity", href: "#services", isRoute: false },
-  { name: "Investments", href: "#services", isRoute: false },
-  { name: "Corporate Advisory", href: "#services", isRoute: false },
+interface SubItem {
+  name: string;
+  href: string;
+  isRoute: boolean;
+}
+
+interface NavItem {
+  name: string;
+  href: string;
+  isRoute: boolean;
+  subItems?: SubItem[];
+}
+
+const navItems: NavItem[] = [
+  {
+    name: "About",
+    href: "#about",
+    isRoute: false,
+    subItems: [
+      { name: "What we do", href: "#whatwedo", isRoute: false },
+      { name: "Our Team", href: "#team", isRoute: false },
+      { name: "Ethics", href: "#ethics", isRoute: false },
+      { name: "Careers", href: "#careers", isRoute: false },
+    ],
+  },
+  { name: "Equity", href: "#equity", isRoute: false },
+  {
+    name: "Investments",
+    href: "#investments",
+    isRoute: false,
+    subItems: [
+      { name: "Mutual Fund", href: "#mutualfund", isRoute: false },
+      { name: "Calculator", href: "#calculator", isRoute: false },
+    ],
+  },
   { name: "Media Coverage", href: "/mediacoverage", isRoute: true },
   { name: "Contact", href: "/contact", isRoute: true },
 ];
@@ -16,6 +46,8 @@ const navItems = [
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileExpandedItems, setMobileExpandedItems] = useState<string[]>([]);
   const location = useLocation();
 
   useEffect(() => {
@@ -25,6 +57,14 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const toggleMobileExpand = (itemName: string) => {
+    setMobileExpandedItems((prev) =>
+      prev.includes(itemName)
+        ? prev.filter((name) => name !== itemName)
+        : [...prev, itemName]
+    );
+  };
 
   return (
     <motion.header
@@ -52,51 +92,90 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            {navItems.map((item, index) =>
-              item.isRoute ? (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -2 }}
-                >
-                  <Link
-                    to={item.href}
-                    className={`relative font-medium text-sm transition-colors ${
-                      location.pathname === item.href
-                        ? "text-primary"
-                        : "text-secondary-foreground/80 hover:text-secondary-foreground"
-                    }`}
+            {navItems.map((item, index) => (
+              <motion.div
+                key={item.name}
+                className="relative"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                onMouseEnter={() => item.subItems && setActiveDropdown(item.name)}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                {item.subItems ? (
+                  <>
+                    <button
+                      className="flex items-center gap-1 text-secondary-foreground/80 hover:text-secondary-foreground transition-colors font-medium text-sm py-2"
+                    >
+                      {item.name}
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform duration-200 ${
+                          activeDropdown === item.name ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {/* Dropdown Menu */}
+                    <AnimatePresence>
+                      {activeDropdown === item.name && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 mt-2 min-w-[180px] bg-secondary border border-secondary-foreground/10 rounded-xl shadow-xl overflow-hidden"
+                        >
+                          {item.subItems.map((subItem, subIndex) => (
+                            <motion.a
+                              key={subItem.name}
+                              href={subItem.href}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: subIndex * 0.05 }}
+                              className="block px-4 py-3 text-sm text-secondary-foreground/80 hover:text-primary hover:bg-primary/10 transition-colors"
+                            >
+                              {subItem.name}
+                            </motion.a>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </>
+                ) : item.isRoute ? (
+                  <motion.div whileHover={{ y: -2 }}>
+                    <Link
+                      to={item.href}
+                      className={`relative font-medium text-sm transition-colors ${
+                        location.pathname === item.href
+                          ? "text-primary"
+                          : "text-secondary-foreground/80 hover:text-secondary-foreground"
+                      }`}
+                    >
+                      {item.name}
+                      <span
+                        className={`absolute -bottom-1 left-0 w-full h-0.5 bg-primary origin-left transition-transform ${
+                          location.pathname === item.href ? "scale-x-100" : "scale-x-0"
+                        }`}
+                      />
+                    </Link>
+                  </motion.div>
+                ) : (
+                  <motion.a
+                    href={item.href}
+                    className="relative text-secondary-foreground/80 hover:text-secondary-foreground transition-colors font-medium text-sm"
+                    whileHover={{ y: -2 }}
                   >
                     {item.name}
-                    <span
-                      className={`absolute -bottom-1 left-0 w-full h-0.5 bg-primary origin-left transition-transform ${
-                        location.pathname === item.href ? "scale-x-100" : "scale-x-0"
-                      }`}
+                    <motion.span
+                      className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary origin-left"
+                      initial={{ scaleX: 0 }}
+                      whileHover={{ scaleX: 1 }}
+                      transition={{ duration: 0.3 }}
                     />
-                  </Link>
-                </motion.div>
-              ) : (
-                <motion.a
-                  key={item.name}
-                  href={item.href}
-                  className="relative text-secondary-foreground/80 hover:text-secondary-foreground transition-colors font-medium text-sm"
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -2 }}
-                >
-                  {item.name}
-                  <motion.span
-                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary origin-left"
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </motion.a>
-              )
-            )}
+                  </motion.a>
+                )}
+              </motion.div>
+            ))}
           </nav>
 
           {/* Contact Button */}
@@ -137,18 +216,53 @@ const Header = () => {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden bg-secondary border-t border-secondary-foreground/10"
           >
-            <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
-              {navItems.map((item, index) =>
-                item.isRoute ? (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
+            <nav className="container mx-auto px-4 py-6 flex flex-col gap-2">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  {item.subItems ? (
+                    <div>
+                      <button
+                        onClick={() => toggleMobileExpand(item.name)}
+                        className="flex items-center justify-between w-full py-3 font-medium text-secondary-foreground hover:text-primary transition-colors"
+                      >
+                        {item.name}
+                        <ChevronDown
+                          className={`w-4 h-4 transition-transform duration-200 ${
+                            mobileExpandedItems.includes(item.name) ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                      <AnimatePresence>
+                        {mobileExpandedItems.includes(item.name) && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="pl-4 border-l-2 border-primary/30 ml-2"
+                          >
+                            {item.subItems.map((subItem) => (
+                              <a
+                                key={subItem.name}
+                                href={subItem.href}
+                                className="block py-2 text-sm text-secondary-foreground/70 hover:text-primary transition-colors"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                              >
+                                {subItem.name}
+                              </a>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : item.isRoute ? (
                     <Link
                       to={item.href}
-                      className={`block py-2 font-medium transition-colors ${
+                      className={`block py-3 font-medium transition-colors ${
                         location.pathname === item.href
                           ? "text-primary"
                           : "text-secondary-foreground hover:text-primary"
@@ -157,21 +271,17 @@ const Header = () => {
                     >
                       {item.name}
                     </Link>
-                  </motion.div>
-                ) : (
-                  <motion.a
-                    key={item.name}
-                    href={item.href}
-                    className="text-secondary-foreground hover:text-primary transition-colors font-medium py-2"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </motion.a>
-                )
-              )}
+                  ) : (
+                    <a
+                      href={item.href}
+                      className="block py-3 text-secondary-foreground hover:text-primary transition-colors font-medium"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </a>
+                  )}
+                </motion.div>
+              ))}
               <Button
                 className="bg-primary hover:bg-primary/90 text-primary-foreground w-full mt-4 rounded-full"
                 asChild
