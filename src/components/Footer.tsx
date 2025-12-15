@@ -25,8 +25,8 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Facebook, href: "#" },
-    { icon: Twitter, href: "#" },
-    { icon: Linkedin, href: "#" },
+    { icon: Twitter, href: "https://x.com/dhanacharyallp?s=11" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/dhanacharya-advisors-llp/posts/?feedView=all" },
     { icon: Instagram, href: "https://www.instagram.com/dhanacharya_advisors?igsh=MWk3NmM5OTF6YmYzbQ%3D%3D&utm_source=qr" },
   ];
 
