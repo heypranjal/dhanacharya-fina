@@ -1,6 +1,6 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { Shield, ChevronRight } from "lucide-react";
+import { Shield, ChevronRight, Scale } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 

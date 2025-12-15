@@ -97,70 +97,147 @@ const OurTeam = () => {
     <main className="min-h-screen overflow-x-hidden">
       <Header />
 
-      {/* Hero Section */}
+      {/* Hero Section with Network Visual */}
       <section ref={heroRef} className="pt-32 pb-16 sm:pb-20 bg-secondary relative overflow-hidden">
         {/* Background decorations */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={heroInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8 }}
+            >
+              <motion.span
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={heroInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5 }}
+                className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6"
+              >
+                Our Team
+              </motion.span>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-secondary-foreground mb-6"
+              >
+                We do whatever <span className="text-primary">it takes.</span>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-lg sm:text-xl text-secondary-foreground/70 mb-8"
+              >
+                Professional and Experienced Financial Consultants
+              </motion.p>
+            </motion.div>
+
+            {/* Connected Network Nodes Visual */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={heroInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex justify-center"
+            >
+              <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-lg">
+                <div className="relative w-48 h-48">
+                  {/* Connection lines */}
+                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
+                    {/* Lines connecting nodes */}
+                    <motion.line
+                      x1="50" y1="15" x2="20" y2="50"
+                      stroke="currentColor" strokeWidth="2" className="text-primary/30"
+                      initial={{ pathLength: 0 }}
+                      animate={heroInView ? { pathLength: 1 } : {}}
+                      transition={{ duration: 0.5, delay: 0.5 }}
+                    />
+                    <motion.line
+                      x1="50" y1="15" x2="80" y2="50"
+                      stroke="currentColor" strokeWidth="2" className="text-primary/30"
+                      initial={{ pathLength: 0 }}
+                      animate={heroInView ? { pathLength: 1 } : {}}
+                      transition={{ duration: 0.5, delay: 0.6 }}
+                    />
+                    <motion.line
+                      x1="20" y1="50" x2="50" y2="85"
+                      stroke="currentColor" strokeWidth="2" className="text-primary/30"
+                      initial={{ pathLength: 0 }}
+                      animate={heroInView ? { pathLength: 1 } : {}}
+                      transition={{ duration: 0.5, delay: 0.7 }}
+                    />
+                    <motion.line
+                      x1="80" y1="50" x2="50" y2="85"
+                      stroke="currentColor" strokeWidth="2" className="text-primary/30"
+                      initial={{ pathLength: 0 }}
+                      animate={heroInView ? { pathLength: 1 } : {}}
+                      transition={{ duration: 0.5, delay: 0.8 }}
+                    />
+                    <motion.line
+                      x1="20" y1="50" x2="80" y2="50"
+                      stroke="currentColor" strokeWidth="2" className="text-primary/30"
+                      initial={{ pathLength: 0 }}
+                      animate={heroInView ? { pathLength: 1 } : {}}
+                      transition={{ duration: 0.5, delay: 0.9 }}
+                    />
+                  </svg>
+                  {/* Node positions: top, left, right, bottom */}
+                  {[
+                    { x: 50, y: 15 },
+                    { x: 20, y: 50 },
+                    { x: 80, y: 50 },
+                    { x: 50, y: 85 },
+                  ].map((pos, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ scale: 0 }}
+                      animate={heroInView ? { scale: 1 } : {}}
+                      transition={{ duration: 0.4, delay: 0.3 + index * 0.1, type: "spring" }}
+                      className="absolute w-10 h-10 bg-primary rounded-full flex items-center justify-center"
+                      style={{
+                        left: `${pos.x}%`,
+                        top: `${pos.y}%`,
+                        transform: "translate(-50%, -50%)",
+                      }}
+                    >
+                      <Users className="w-5 h-5 text-primary-foreground" />
+                    </motion.div>
+                  ))}
+                </div>
+                <p className="text-center text-sm text-muted-foreground mt-4">Connected Team</p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Stats */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12"
           >
-            <motion.span
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={heroInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5 }}
-              className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6"
-            >
-              Our Team
-            </motion.span>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-secondary-foreground mb-6"
-            >
-              We do whatever <span className="text-primary">it takes.</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg sm:text-xl text-secondary-foreground/70 mb-8"
-            >
-              Professional and Experienced Financial Consultants
-            </motion.p>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12"
-            >
-              {[
-                { icon: Users, label: "Team Members", value: "4+" },
-                { icon: Award, label: "Certifications", value: "10+" },
-                { icon: Briefcase, label: "Years Experience", value: "50+" },
-                { icon: Trophy, label: "Achievements", value: "20+" },
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={heroInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                  className="bg-secondary-foreground/5 backdrop-blur-sm rounded-2xl p-6 border border-secondary-foreground/10"
-                >
-                  <stat.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <p className="text-2xl sm:text-3xl font-bold text-secondary-foreground">{stat.value}</p>
-                  <p className="text-sm text-secondary-foreground/60">{stat.label}</p>
-                </motion.div>
-              ))}
-            </motion.div>
+            {[
+              { icon: Users, label: "Team Members", value: "4+" },
+              { icon: Award, label: "Certifications", value: "10+" },
+              { icon: Briefcase, label: "Years Experience", value: "50+" },
+              { icon: Trophy, label: "Achievements", value: "20+" },
+            ].map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                className="bg-secondary-foreground/5 backdrop-blur-sm rounded-2xl p-6 border border-secondary-foreground/10"
+              >
+                <stat.icon className="w-8 h-8 text-primary mx-auto mb-3" />
+                <p className="text-2xl sm:text-3xl font-bold text-secondary-foreground">{stat.value}</p>
+                <p className="text-sm text-secondary-foreground/60">{stat.label}</p>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>

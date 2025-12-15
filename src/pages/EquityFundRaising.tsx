@@ -99,7 +99,7 @@ const EquityFundRaising = () => {
     <main className="min-h-screen overflow-x-hidden">
       <Header />
 
-      {/* Hero Section */}
+      {/* Hero Section with Rocket Visual */}
       <section
         ref={heroRef}
         className="pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 bg-secondary relative overflow-hidden"
@@ -109,49 +109,111 @@ const EquityFundRaising = () => {
         <div className="absolute bottom-10 right-5 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-              Equity Fund Raising
-            </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-secondary-foreground mb-4 sm:mb-6">
-              Plan To Raise Money For Your{" "}
-              <span className="text-primary">Startup?</span>
-            </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-secondary-foreground/80 max-w-3xl mx-auto mb-8">
-              We help startups at every stage of their funding journey
-            </p>
-
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* Content */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              initial={{ opacity: 0, x: -40 }}
+              animate={heroInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8 }}
             >
-              <motion.a
-                href="tel:+918285363331"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-colors"
+              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+                Equity Fund Raising
+              </span>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-heading font-bold text-secondary-foreground mb-4 sm:mb-6">
+                Plan To Raise Money For Your{" "}
+                <span className="text-primary">Startup?</span>
+              </h1>
+              <p className="text-base sm:text-lg text-secondary-foreground/80 mb-8">
+                We help startups at every stage of their funding journey
+              </p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="flex flex-col sm:flex-row items-start gap-4"
               >
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-                Call Us Now
-              </motion.a>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 bg-transparent border-2 border-primary text-primary hover:bg-primary/10 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-colors"
+                <motion.a
+                  href="tel:+918285363331"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-colors"
                 >
-                  Get Consultation
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                </Link>
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
+                  Call Us Now
+                </motion.a>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center gap-2 bg-transparent border-2 border-primary text-primary hover:bg-primary/10 font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-colors"
+                  >
+                    Get Consultation
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </Link>
+                </motion.div>
               </motion.div>
             </motion.div>
-          </motion.div>
+
+            {/* Rocket Ascending Visual */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={heroInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex justify-center"
+            >
+              <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-lg">
+                <div className="relative w-48 h-56 flex items-center justify-center">
+                  {/* Ascending trail lines */}
+                  {[0, 1, 2, 3, 4].map((i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ scaleY: 0, opacity: 0 }}
+                      animate={heroInView ? { scaleY: 1, opacity: 1 } : {}}
+                      transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
+                      className="absolute bottom-0 w-2 bg-primary/20 rounded-full origin-bottom"
+                      style={{
+                        left: `${20 + i * 15}%`,
+                        height: `${30 + i * 15}%`,
+                      }}
+                    />
+                  ))}
+                  {/* Rocket */}
+                  <motion.div
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={heroInView ? { y: 0, opacity: 1 } : {}}
+                    transition={{ duration: 0.6, delay: 0.8, type: "spring" }}
+                    className="relative z-10"
+                  >
+                    <div className="w-16 h-20 bg-primary rounded-t-full flex items-center justify-center">
+                      <Rocket className="w-8 h-8 text-primary-foreground -rotate-45" />
+                    </div>
+                    {/* Flame */}
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={heroInView ? { scale: [1, 1.2, 1] } : {}}
+                      transition={{ duration: 0.5, delay: 1, repeat: Infinity, repeatDelay: 0.5 }}
+                      className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-primary/60 rounded-b-full"
+                    />
+                  </motion.div>
+                  {/* Stars */}
+                  {[0, 1, 2, 3].map((i) => (
+                    <motion.div
+                      key={`star-${i}`}
+                      initial={{ scale: 0 }}
+                      animate={heroInView ? { scale: 1 } : {}}
+                      transition={{ duration: 0.3, delay: 0.9 + i * 0.1 }}
+                      className="absolute w-2 h-2 bg-primary rounded-full"
+                      style={{
+                        left: `${10 + i * 25}%`,
+                        top: `${15 + (i % 2) * 20}%`,
+                      }}
+                    />
+                  ))}
+                </div>
+                <p className="text-center text-sm text-muted-foreground mt-4">Growth Journey</p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

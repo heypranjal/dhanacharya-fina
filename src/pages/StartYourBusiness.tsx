@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Building, Users, User, Handshake, Scale, Heart, FileText, ChevronRight } from "lucide-react";
+import { Building, User, Handshake, Scale, Heart, FileText, ChevronRight, Check } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -105,79 +105,149 @@ const StartYourBusiness = () => {
       {/* How to Register Section */}
       <section ref={registerRef} className="py-16 sm:py-20 lg:py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={registerInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground mb-8">
-              How to get your business <span className="text-primary">registered?</span>
-            </h2>
-            <div className="space-y-6 text-muted-foreground">
-              <p className="leading-relaxed text-base sm:text-lg">
-                One critical aspect that most founders aren't the best at is the basic legal requirements for the incorporation and commencement of business. The first step to start a new business is to get it registered.
-              </p>
-              <p className="leading-relaxed text-base sm:text-lg">
-                There are multiple business structures from which you can choose the one which is most appropriate for your organisational aspirations. A new business must get incorporated in any of these business structures as per the scale of its operations, capital invested, number of members, and the risk associated with the business.
-              </p>
-              <p className="leading-relaxed text-base sm:text-lg">
-                As the features, pros and cons of each business structure are different, we as an area expert enter into a detailed discussion with our clients to understand their requirements & conditions of our client enabling them to form the most suitable legal entity of their business.
-              </p>
-            </div>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+              {/* Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                animate={registerInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8 }}
+              >
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground mb-8">
+                  How to get your business <span className="text-primary">registered?</span>
+                </h2>
+                <div className="space-y-6 text-muted-foreground">
+                  <p className="leading-relaxed text-base sm:text-lg">
+                    One critical aspect that most founders aren't the best at is the basic legal requirements for the incorporation and commencement of business. The first step to start a new business is to get it registered.
+                  </p>
+                  <p className="leading-relaxed text-base sm:text-lg">
+                    There are multiple business structures from which you can choose the one which is most appropriate for your organisational aspirations.
+                  </p>
+                </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={registerInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="mt-10 bg-primary/10 rounded-2xl p-6 border border-primary/20"
-            >
-              <p className="text-lg sm:text-xl font-semibold text-foreground text-center">
-                We help incorporate your business
-              </p>
-            </motion.div>
-          </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={registerInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="mt-8 bg-primary/10 rounded-2xl p-6 border border-primary/20"
+                >
+                  <p className="text-lg sm:text-xl font-semibold text-foreground text-center">
+                    We help incorporate your business
+                  </p>
+                </motion.div>
+              </motion.div>
+
+              {/* Growth Bar Chart Visual */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={registerInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="flex justify-center"
+              >
+                <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-lg">
+                  <div className="flex items-end justify-center gap-3 h-48">
+                    {[30, 45, 60, 80, 100].map((height, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ height: 0 }}
+                        animate={registerInView ? { height: `${height}%` } : {}}
+                        transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                        className="w-10 sm:w-12 bg-primary rounded-t-sm relative"
+                      >
+                        <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-xs text-muted-foreground">
+                          {index + 1}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                  <p className="text-center text-sm text-muted-foreground mt-4">Business Growth Stages</p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Types of Legal Entities Section */}
       <section ref={entitiesRef} className="py-16 sm:py-20 lg:py-24 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={entitiesInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-secondary-foreground mb-4">
-              Types of <span className="text-primary">legal entities</span>
-            </h2>
-          </motion.div>
-
-          <div className="space-y-6 max-w-4xl mx-auto">
-            {legalEntities.map((entity, index) => (
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+              {/* Building Blocks Visual */}
               <motion.div
-                key={entity.title}
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -40 }}
                 animate={entitiesInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-card rounded-2xl p-6 border border-border/50 shadow-lg"
+                transition={{ duration: 0.8 }}
+                className="flex justify-center order-2 lg:order-1"
               >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <entity.icon className="w-6 h-6 text-primary" />
+                <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-lg">
+                  <div className="flex flex-col items-center gap-2">
+                    {/* Building blocks stacked */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={entitiesInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.7 }}
+                      className="w-16 h-12 bg-primary rounded-sm"
+                    />
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={entitiesInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.6 }}
+                      className="w-24 h-12 bg-primary/80 rounded-sm"
+                    />
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={entitiesInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.5 }}
+                      className="w-32 h-12 bg-primary/60 rounded-sm"
+                    />
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={entitiesInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.4 }}
+                      className="w-40 h-12 bg-primary/40 rounded-sm"
+                    />
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={entitiesInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                      className="w-48 h-12 bg-primary/20 rounded-sm"
+                    />
                   </div>
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-heading font-bold text-foreground mb-2">
-                      {index + 1}) {entity.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {entity.description}
-                    </p>
-                  </div>
+                  <p className="text-center text-sm text-muted-foreground mt-4">5 Entity Types</p>
                 </div>
               </motion.div>
-            ))}
+
+              {/* Content */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={entitiesInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="order-1 lg:order-2"
+              >
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-secondary-foreground mb-8">
+                  Types of <span className="text-primary">legal entities</span>
+                </h2>
+                <div className="space-y-4">
+                  {legalEntities.map((entity, index) => (
+                    <motion.div
+                      key={entity.title}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={entitiesInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                      className="flex items-center gap-3"
+                    >
+                      <span className="w-6 h-6 rounded bg-primary flex items-center justify-center flex-shrink-0">
+                        <Check className="w-4 h-4 text-primary-foreground" />
+                      </span>
+                      <span className="text-sm sm:text-base font-medium text-secondary-foreground">
+                        {entity.title}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -185,49 +255,75 @@ const StartYourBusiness = () => {
       {/* Business Plan Section */}
       <section ref={businessPlanRef} className="py-16 sm:py-20 lg:py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={businessPlanInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground mb-8">
-              Business <span className="text-primary">Plan</span>
-            </h2>
-            <div className="space-y-6 text-muted-foreground">
-              <p className="leading-relaxed text-base sm:text-lg">
-                Business Plan is uniform written arrangement of your ideas, goal, mission, vision & prospects in a single document. In other words its investor pitch deck or a set of documents for providers of capital that walks them through the business idea and goal in depth. A comprehensive Business Plan helps them to get into the founder's shoes and understand the intent and objective of the idea in a palpable manner and hence help the investor to take correct approach towards the valuation of the company. Business plans are used for presenting your idea to investors like angle investors, venture capitalist, private equity investor, private capitalists & banking institutions.
-              </p>
-              <p className="leading-relaxed text-base sm:text-lg">
-                A well drafted Business Plan contains a complete set of information of business along with the co founders. It also includes financial projections with forecasted cash flow, a pitch for them to invest in the business. Dhanacharya advisors has a team of professionals with vast experience of preparing financial and business plans.
-              </p>
-            </div>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+              {/* Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                animate={businessPlanInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8 }}
+              >
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+                  Business <span className="text-primary">Plan</span>
+                </h2>
+                <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-6">
+                  Business Plan is uniform written arrangement of your ideas, goal, mission, vision & prospects in a single document. A comprehensive Business Plan helps investors understand the intent and objective of the idea.
+                </p>
+                <h3 className="text-lg sm:text-xl font-heading font-bold text-foreground mb-4">
+                  What is covered in a business plan?
+                </h3>
+                <div className="grid grid-cols-2 gap-2">
+                  {businessPlanItems.slice(0, 10).map((item, index) => (
+                    <motion.div
+                      key={item}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={businessPlanInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
+                      className="flex items-center gap-2"
+                    >
+                      <ChevronRight className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span className="text-xs sm:text-sm text-foreground">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={businessPlanInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="mt-10"
-            >
-              <h3 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-6">
-                What is covered in a business plan ?
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {businessPlanItems.map((item, index) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={businessPlanInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.3, delay: 0.4 + index * 0.05 }}
-                    className="flex items-center gap-2 bg-muted/50 rounded-lg p-3"
-                  >
-                    <ChevronRight className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span className="text-sm sm:text-base text-foreground">{item}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
+              {/* Document Stack Visual */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={businessPlanInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="flex justify-center"
+              >
+                <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-lg">
+                  <div className="relative w-48 h-56">
+                    {/* Stacked documents */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={businessPlanInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                      className="absolute bottom-0 left-0 w-40 h-48 bg-primary/20 rounded-lg"
+                    />
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={businessPlanInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.4 }}
+                      className="absolute bottom-2 left-2 w-40 h-48 bg-primary/40 rounded-lg"
+                    />
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={businessPlanInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.5, delay: 0.5 }}
+                      className="absolute bottom-4 left-4 w-40 h-48 bg-primary/60 rounded-lg flex items-center justify-center"
+                    >
+                      <FileText className="w-16 h-16 text-primary-foreground/60" />
+                    </motion.div>
+                  </div>
+                  <p className="text-center text-sm text-muted-foreground mt-4">Business Plan Documents</p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 

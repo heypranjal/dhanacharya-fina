@@ -1,26 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import {
-  TrendingUp,
-  PiggyBank,
-  Briefcase,
-  CreditCard,
-  ArrowRight,
-  Users,
-  Target,
-  Shield,
-  Calculator,
-  Building,
-  FileText,
-  Scale,
-  Receipt,
-  Home,
-  GraduationCap,
-  Coins,
-  Wallet,
-  Landmark,
-  BadgeCheck,
-} from "lucide-react";
+import { Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -38,368 +18,338 @@ const WhatWeDo = () => {
   const corporateInView = useInView(corporateRef, { once: false, margin: "-100px" });
   const loansInView = useInView(loansRef, { once: false, margin: "-100px" });
 
-  const investmentServices = [
-    { name: "Mutual Fund", icon: PiggyBank, href: "#mutualfund" },
-    { name: "Calculator", icon: Calculator, href: "#calculator" },
+  const investmentItems = [
+    { name: "Mutual Fund", href: "/mutualfunds" },
+    { name: "Calculator", href: "/calculator" },
   ];
 
-  const corporateServices = [
-    { name: "Start Your Business", icon: Building, description: "Company incorporation and setup" },
-    { name: "Intellectual Property", icon: Shield, description: "Patent, trademark & copyright protection" },
-    { name: "Registration & Licenses", icon: FileText, description: "All statutory registrations" },
-    { name: "Tax & Compliance", icon: Receipt, description: "Tax advisory and compliance management" },
+  const corporateItems = [
+    { name: "Start Your Business", href: "/start-your-business" },
+    { name: "Intellectual Property", href: "/intellectual-property" },
+    { name: "Registration & Licenses", href: "/registration-licenses" },
+    { name: "Tax & Compliance", href: "/taxation-advisory" },
   ];
 
-  const loanTypes = [
-    { name: "Personal Loan", icon: Wallet },
-    { name: "Business Loan", icon: Briefcase },
-    { name: "Home Loan", icon: Home },
-    { name: "Education Loan", icon: GraduationCap },
-    { name: "Gold Loan", icon: Coins },
-    { name: "Credit Cards", icon: CreditCard },
-  ];
-
-  const stats = [
-    { value: "100+", label: "Years Combined Experience" },
-    { value: "500+", label: "Clients Served" },
-    { value: "₹100Cr+", label: "Funds Raised" },
-    { value: "Pan India", label: "Coverage" },
+  const loanItems = [
+    "Personal Loan",
+    "Business Loan",
+    "Home Loan",
+    "Education Loan",
+    "Gold Loan",
+    "Credit Cards",
   ];
 
   return (
     <main className="min-h-screen overflow-x-hidden">
       <Header />
 
-      {/* Hero Section */}
+      {/* Hero Section - Why Do You Need Us */}
       <section
         ref={heroRef}
-        className="pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 bg-secondary relative overflow-hidden"
+        className="pt-32 pb-16 sm:pb-20 bg-secondary relative overflow-hidden"
       >
-        {/* Background decorations */}
-        <div className="absolute top-10 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-5 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-              Our Services
-            </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-secondary-foreground mb-4 sm:mb-6">
-              What Do <span className="text-primary">We Do</span>
-            </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-secondary-foreground/80 max-w-3xl mx-auto mb-8">
-              We help startups in their fund raising process
-            </p>
-          </motion.div>
-
-          {/* Why Do You Need Us Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-4xl mx-auto mt-8 sm:mt-12"
-          >
-            <div className="bg-navy-light/30 backdrop-blur-sm border border-secondary-foreground/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10">
-              <div className="flex items-center gap-3 mb-4 sm:mb-6">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Target className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
-                </div>
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-heading font-bold text-secondary-foreground">
-                  Why Do You <span className="text-primary">Need Us?</span>
-                </h2>
-              </div>
-              <p className="text-sm sm:text-base lg:text-lg text-secondary-foreground/70 leading-relaxed mb-6">
-                We are financial & business consultants providing a wide array of investment, corporate and legal services including fundraising services for individual and corporate clients on a Pan India basis.
-              </p>
-              <p className="text-sm sm:text-base lg:text-lg text-secondary-foreground/70 leading-relaxed">
-                As a team of financial, management & legal experts having an industry wide combined experience of{" "}
-                <span className="text-primary font-semibold">100+ years</span>, we are dedicated to helping our clients, employees, and communities achieve financial security, financial mobility, and financial freedom through our services.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto mt-8 sm:mt-12"
-          >
-            {stats.map((stat, index) => (
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-start">
+              {/* Title */}
               <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={heroInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                className="text-center p-4 sm:p-6 bg-navy-light/20 rounded-xl border border-secondary-foreground/5"
+                initial={{ opacity: 0, x: -30 }}
+                animate={heroInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8 }}
               >
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-1 sm:mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-xs sm:text-sm text-secondary-foreground/60">{stat.label}</div>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-secondary-foreground leading-tight">
+                  Why Do You Need <span className="text-primary">Us?</span>
+                </h1>
               </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Equity Fund Raising Section */}
-      <section
-        ref={equityRef}
-        id="equity"
-        className="py-16 sm:py-20 lg:py-24 bg-background relative overflow-hidden"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={equityInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-                Fund Raising
-              </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4 sm:mb-6">
-                Equity Fund <span className="text-primary">Raising</span>
-              </h2>
-              <p className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed mb-6">
-                We have an empowered network of Angel Investors & Venture Capital and PE funds that ensures our member startups have easy access to external funds to scale up constantly.
-              </p>
-              <p className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed mb-8">
-                Dhanacharya provides you with the strategy, skills and support you need to secure equity funding and assists you in preparing the best pitch to secure committed investments from Angel Investors, VCs or via Crowdfunding, even if you've no previous experience in dealing with investors.
-              </p>
-              <Link to="/equityfundraising">
-                <motion.span
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-colors"
-                >
-                  Learn More
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                </motion.span>
-              </Link>
-            </motion.div>
+              {/* First Paragraph */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.1 }}
+              >
+                <p className="text-secondary-foreground/70 leading-relaxed text-sm sm:text-base">
+                  We are financial & business consultants providing a wide array of investment, corporate and legal services including fundraising services for individual and corporate clients on a Pan India basis.
+                </p>
+              </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={equityInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="bg-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-border/50 shadow-xl">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
-                    <TrendingUp className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-heading font-bold text-foreground">
-                      Funding Solutions
-                    </h3>
-                    <p className="text-sm text-muted-foreground">For every stage of growth</p>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  {["Angel Investment", "Venture Capital", "PE Funds", "Crowdfunding"].map((item, index) => (
-                    <motion.div
-                      key={item}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={equityInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                      className="flex items-center gap-3 p-3 bg-muted/50 rounded-xl"
-                    >
-                      <BadgeCheck className="w-5 h-5 text-primary flex-shrink-0" />
-                      <span className="text-sm sm:text-base text-foreground">{item}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+              {/* Second Paragraph */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <p className="text-secondary-foreground/70 leading-relaxed text-sm sm:text-base">
+                  As a team of financial, management & legal experts having an industry wide combined experience of 100+ years, we are dedicated to helping our clients, employees, and communities achieve financial security, financial mobility, and financial freedom through our services
+                </p>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Investments Section */}
+      {/* 01 - Equity Fund Raising Section */}
+      <section
+        ref={equityRef}
+        id="equity"
+        className="py-16 sm:py-20 lg:py-24 bg-background"
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+              {/* Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                animate={equityInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8 }}
+              >
+                <span className="text-primary font-bold text-5xl sm:text-6xl lg:text-7xl opacity-30">01</span>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6 -mt-4">
+                  Equity Fund Raising
+                </h2>
+                <p className="text-muted-foreground leading-relaxed text-sm sm:text-base mb-8">
+                  We have an empowered network of Angel Investors & Venture Capital and PE funds that ensures our member startups have easy access to external funds to scale up constantly. Dhanacharya provides you with the strategy, skills and support you need to secure equity funding and assists you in preparing the best pitch to secure committed investments from Angel Investors, VCs or via Crowdfunding, even if you've no previous experience in dealing with investors.
+                </p>
+                <Link to="/equityfundraising">
+                  <motion.span
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 py-3 rounded-full transition-colors text-sm"
+                  >
+                    LEARN MORE
+                  </motion.span>
+                </Link>
+              </motion.div>
+
+              {/* Bar Chart Visual */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={equityInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="flex justify-center"
+              >
+                <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-lg">
+                  <div className="flex items-end justify-center gap-3 h-48">
+                    {[40, 55, 70, 85, 100].map((height, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ height: 0 }}
+                        animate={equityInView ? { height: `${height}%` } : {}}
+                        transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                        className="w-8 sm:w-10 bg-primary rounded-t-sm"
+                      />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 02 - Investments Section */}
       <section
         ref={investmentsRef}
         id="investments"
         className="py-16 sm:py-20 lg:py-24 bg-secondary relative overflow-hidden"
       >
-        <div className="absolute top-10 right-5 sm:right-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-5 sm:left-10 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-10 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={investmentsInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-10 sm:mb-12 lg:mb-16"
-          >
-            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-              Wealth Creation
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-secondary-foreground mb-4 sm:mb-6">
-              <span className="text-primary">Investments</span>
-            </h2>
-            <p className="text-sm sm:text-base lg:text-lg text-secondary-foreground/70 max-w-3xl mx-auto">
-              We exist to reach to the common man with foundation stone for creating long-term wealth for the investor through various financial products and extend the opportunity to make wealth through an empowered network of Dhanacharya Advisors.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={investmentsInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-navy-light/30 backdrop-blur-sm border border-secondary-foreground/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 max-w-3xl mx-auto mb-10"
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <Users className="w-6 h-6 text-primary" />
-              <p className="text-sm sm:text-base text-secondary-foreground/80">
-                Explore how our advisors can help you to meet your goals and succeed as investors.
-              </p>
-            </div>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto">
-            {investmentServices.map((service, index) => (
-              <motion.a
-                key={service.name}
-                href={service.href}
-                initial={{ opacity: 0, y: 30 }}
-                animate={investmentsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="bg-navy-light/30 backdrop-blur-sm border border-secondary-foreground/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center hover:border-primary/50 transition-all group"
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+              {/* Pie Chart Visual */}
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                animate={investmentsInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8 }}
+                className="flex justify-center order-2 lg:order-1"
               >
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                  <service.icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
+                <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-lg">
+                  <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full border-8 border-primary/20 flex items-center justify-center">
+                    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-8 border-primary/40 flex items-center justify-center">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary" />
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-lg sm:text-xl font-heading font-bold text-secondary-foreground group-hover:text-primary transition-colors">
-                  {service.name}
-                </h3>
-              </motion.a>
-            ))}
+              </motion.div>
+
+              {/* Content */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={investmentsInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="order-1 lg:order-2"
+              >
+                <div className="text-right">
+                  <span className="text-primary font-bold text-5xl sm:text-6xl lg:text-7xl opacity-30">02</span>
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-secondary-foreground mb-6 -mt-4">
+                    Investments
+                  </h2>
+                </div>
+                <p className="text-secondary-foreground/70 leading-relaxed text-sm sm:text-base mb-6 text-right">
+                  We exist to reach to the common man with foundation stone for creating long-term wealth for the investor through various financial products and extend the opportunity to make wealth through an empowered network of Dhanacharya Advisors. Explore how our advisors can help you to meet your goals and succeed as investors.
+                </p>
+                <div className="flex flex-col items-end gap-3">
+                  {investmentItems.map((item, index) => (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={investmentsInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                    >
+                      <Link
+                        to={item.href}
+                        className="flex items-center gap-3 text-secondary-foreground hover:text-primary transition-colors group"
+                      >
+                        <span className="text-sm sm:text-base font-medium">{item.name}</span>
+                        <span className="w-6 h-6 rounded bg-primary flex items-center justify-center">
+                          <Check className="w-4 h-4 text-primary-foreground" />
+                        </span>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Corporate Advisory Section */}
+      {/* 03 - Corporate Advisory Section */}
       <section
         ref={corporateRef}
         id="corporate"
-        className="py-16 sm:py-20 lg:py-24 bg-background relative overflow-hidden"
+        className="py-16 sm:py-20 lg:py-24 bg-background"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={corporateInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-10 sm:mb-12 lg:mb-16"
-          >
-            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-              Business Solutions
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4 sm:mb-6">
-              Corporate <span className="text-primary">Advisory</span>
-            </h2>
-            <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-3xl mx-auto">
-              We provide specialised services (which matches their core competency) in the form of complete solution. These services include, incorporation, taxation advice, legal vetting, statutory compliance work, evaluating a business proposal, financial management, transaction support etc.
-            </p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {corporateServices.map((service, index) => (
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+              {/* Content */}
               <motion.div
-                key={service.name}
-                initial={{ opacity: 0, y: 30 }}
-                animate={corporateInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="bg-card rounded-xl sm:rounded-2xl p-6 border border-border/50 hover:border-primary/50 hover:shadow-xl transition-all group"
+                initial={{ opacity: 0, x: -40 }}
+                animate={corporateInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8 }}
               >
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <service.icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
-                </div>
-                <h3 className="text-base sm:text-lg font-heading font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {service.name}
-                </h3>
-                <p className="text-xs sm:text-sm text-muted-foreground">
-                  {service.description}
+                <span className="text-primary font-bold text-5xl sm:text-6xl lg:text-7xl opacity-30">03</span>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6 -mt-4">
+                  Corporate Advisory
+                </h2>
+                <p className="text-muted-foreground leading-relaxed text-sm sm:text-base mb-8">
+                  We provide specialised services (which matches their core competency) in the form of complete solution. These services include, incorporation, taxation advice, legal vetting, statutory compliance work, evaluating a business proposal, financial management, transaction support etc.
                 </p>
+                <div className="flex flex-col gap-3">
+                  {corporateItems.map((item, index) => (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={corporateInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                    >
+                      <Link
+                        to={item.href}
+                        className="flex items-center gap-3 text-foreground hover:text-primary transition-colors group"
+                      >
+                        <span className="w-6 h-6 rounded bg-primary flex items-center justify-center">
+                          <Check className="w-4 h-4 text-primary-foreground" />
+                        </span>
+                        <span className="text-sm sm:text-base font-medium">{item.name}</span>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
               </motion.div>
-            ))}
+
+              {/* Briefcase Visual */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={corporateInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="flex justify-center"
+              >
+                <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-lg">
+                  <div className="w-48 h-56 sm:w-56 sm:h-64 bg-primary/10 rounded-lg flex items-end justify-center pb-6">
+                    <div className="w-20 h-28 sm:w-24 sm:h-32 bg-primary/30 rounded-t-lg" />
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Loans Section */}
+      {/* 04 - Loans Section */}
       <section
         ref={loansRef}
         id="loans"
         className="py-16 sm:py-20 lg:py-24 bg-secondary relative overflow-hidden"
       >
-        <div className="absolute top-10 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-5 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute top-10 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={loansInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-10 sm:mb-12 lg:mb-16"
-          >
-            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-              Financing Solutions
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-secondary-foreground mb-4 sm:mb-6">
-              <span className="text-primary">Loans</span>
-            </h2>
-            <p className="text-sm sm:text-base lg:text-lg text-secondary-foreground/70 max-w-3xl mx-auto">
-              We with our various finance partners strives to get you the best loan and Credit Card deals in just a few clicks. These include home loan, personal loan, business loan, gold loan, education loan, venture debts. Our services come at no cost to our clients.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
-            {loanTypes.map((loan, index) => (
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+              {/* Coins Visual */}
               <motion.div
-                key={loan.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={loansInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                whileHover={{ y: -5, scale: 1.05 }}
-                className="bg-navy-light/30 backdrop-blur-sm border border-secondary-foreground/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:border-primary/50 transition-all group cursor-pointer"
+                initial={{ opacity: 0, x: -40 }}
+                animate={loansInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8 }}
+                className="flex justify-center order-2 lg:order-1"
               >
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/20 transition-colors">
-                  <loan.icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
+                <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-lg">
+                  <div className="relative">
+                    <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-primary/20 flex items-center justify-center">
+                      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-primary/40 flex items-center justify-center">
+                        <span className="text-primary text-3xl sm:text-4xl font-bold">$</span>
+                      </div>
+                    </div>
+                    {/* Decorative coins */}
+                    <div className="absolute -bottom-4 -left-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/60" />
+                    <div className="absolute -bottom-2 left-8 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/40" />
+                  </div>
                 </div>
-                <h3 className="text-xs sm:text-sm font-heading font-semibold text-secondary-foreground group-hover:text-primary transition-colors">
-                  {loan.name}
-                </h3>
               </motion.div>
-            ))}
-          </div>
 
-          {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={loansInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-center mt-10 sm:mt-12"
-          >
-            <motion.a
-              href="/contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-colors"
-            >
-              Get Started
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-            </motion.a>
-          </motion.div>
+              {/* Content */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={loansInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="order-1 lg:order-2"
+              >
+                <div className="text-center lg:text-right">
+                  <span className="text-primary font-bold text-5xl sm:text-6xl lg:text-7xl opacity-30">04</span>
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-secondary-foreground mb-6 -mt-4">
+                    Loans
+                  </h2>
+                </div>
+                <p className="text-secondary-foreground/70 leading-relaxed text-sm sm:text-base mb-6 text-center lg:text-right">
+                  We with our various finance partners strives to get you the best loan and Credit Card deals in just a few clicks. These include home loan, personal loan, business loan, gold loan, education loan, venture debts. Our services come at no cost to our clients.
+                </p>
+                <div className="flex flex-col items-center lg:items-end gap-3">
+                  {loanItems.map((item, index) => (
+                    <motion.div
+                      key={item}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={loansInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                      className="flex items-center gap-3"
+                    >
+                      <span className="text-sm sm:text-base font-medium text-secondary-foreground">{item}</span>
+                      <span className="w-6 h-6 rounded bg-primary flex items-center justify-center">
+                        <Check className="w-4 h-4 text-primary-foreground" />
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 

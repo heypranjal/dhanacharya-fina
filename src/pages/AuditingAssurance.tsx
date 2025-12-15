@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Shield, AlertTriangle, FileCheck, TrendingUp, ChevronRight } from "lucide-react";
+import { AlertTriangle, FileCheck, TrendingUp, Check } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -32,9 +32,11 @@ const efficiencyItems = [
 
 const AuditingAssurance = () => {
   const heroRef = useRef(null);
+  const introRef = useRef(null);
   const servicesRef = useRef(null);
 
   const heroInView = useInView(heroRef, { once: false, margin: "-100px" });
+  const introInView = useInView(introRef, { once: false, margin: "-100px" });
   const servicesInView = useInView(servicesRef, { once: false, margin: "-100px" });
 
   return (
@@ -65,121 +67,186 @@ const AuditingAssurance = () => {
         </div>
       </section>
 
-      {/* Introduction Section */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-background">
+      {/* Introduction Section with Shield Visual */}
+      <section ref={introRef} className="py-16 sm:py-20 lg:py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground mb-8">
-              Auditing, Assurance & <span className="text-primary">Corporate Governance</span>
-            </h2>
-            <div className="space-y-6 text-muted-foreground">
-              <p className="leading-relaxed text-base sm:text-lg">
-                In a rapidly evolving business & regulatory environment, the right guidance is more important than ever.
-              </p>
-              <p className="leading-relaxed text-base sm:text-lg">
-                We draw on deep industry experience & global resources to help clients to navigate change, bolster investor confidence & strengthen the value of their businesses.
-              </p>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+              {/* Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                animate={introInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8 }}
+              >
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground mb-8">
+                  Auditing, Assurance & <span className="text-primary">Corporate Governance</span>
+                </h2>
+                <div className="space-y-6 text-muted-foreground">
+                  <p className="leading-relaxed text-base sm:text-lg">
+                    In a rapidly evolving business & regulatory environment, the right guidance is more important than ever.
+                  </p>
+                  <p className="leading-relaxed text-base sm:text-lg">
+                    We draw on deep industry experience & global resources to help clients to navigate change, bolster investor confidence & strengthen the value of their businesses.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Shield with Checkmark Visual */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={introInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="flex justify-center"
+              >
+                <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-lg">
+                  <div className="relative w-48 h-56 flex items-center justify-center">
+                    {/* Shield shape */}
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={introInView ? { scale: 1 } : {}}
+                      transition={{ duration: 0.6, delay: 0.3 }}
+                      className="absolute w-40 h-48 bg-primary/20 rounded-t-full"
+                      style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
+                    />
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={introInView ? { scale: 1 } : {}}
+                      transition={{ duration: 0.6, delay: 0.4 }}
+                      className="absolute w-32 h-40 bg-primary/40 rounded-t-full"
+                      style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
+                    />
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={introInView ? { scale: 1 } : {}}
+                      transition={{ duration: 0.6, delay: 0.5 }}
+                      className="absolute w-24 h-32 bg-primary rounded-t-full flex items-center justify-center"
+                      style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
+                    >
+                      <Check className="w-10 h-10 text-primary-foreground" />
+                    </motion.div>
+                  </div>
+                  <p className="text-center text-sm text-muted-foreground mt-4">Protected & Compliant</p>
+                </div>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Services Section with Efficiency Chart */}
       <section ref={servicesRef} className="py-16 sm:py-20 lg:py-24 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-            {/* Risk Advisory */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={servicesInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}
-              className="bg-card rounded-2xl p-6 border border-border/50 shadow-lg"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                <AlertTriangle className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="text-xl font-heading font-bold text-foreground mb-4">
-                1) Risk Advisory
-              </h3>
-              <div className="space-y-2">
-                {riskAdvisoryItems.map((item, index) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={servicesInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                    className="flex items-start gap-2"
-                  >
-                    <ChevronRight className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{item}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+              {/* Trending Bar Chart Visual */}
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                animate={servicesInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8 }}
+                className="flex justify-center order-2 lg:order-1"
+              >
+                <div className="bg-card rounded-2xl p-8 border border-border/50 shadow-lg">
+                  <div className="flex items-end justify-center gap-2 h-48">
+                    {[25, 40, 35, 55, 50, 70, 65, 85, 80, 100].map((height, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ height: 0 }}
+                        animate={servicesInView ? { height: `${height}%` } : {}}
+                        transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
+                        className="w-6 sm:w-8 bg-primary/80 rounded-t-sm"
+                      />
+                    ))}
+                  </div>
+                  <p className="text-center text-sm text-muted-foreground mt-4">Efficiency Growth</p>
+                </div>
+              </motion.div>
 
-            {/* Regulatory Compliances */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={servicesInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-card rounded-2xl p-6 border border-border/50 shadow-lg"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                <FileCheck className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="text-xl font-heading font-bold text-foreground mb-4">
-                2) Regulatory Compliances
-              </h3>
-              <div className="space-y-2">
-                {regulatoryComplianceItems.map((item, index) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={servicesInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
-                    className="flex items-start gap-2"
-                  >
-                    <ChevronRight className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{item}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+              {/* Service Categories */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={servicesInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="order-1 lg:order-2 space-y-6"
+              >
+                {/* Risk Advisory */}
+                <div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <AlertTriangle className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-heading font-bold text-secondary-foreground">
+                      1) Risk Advisory
+                    </h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {riskAdvisoryItems.slice(0, 4).map((item, index) => (
+                      <motion.span
+                        key={item}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={servicesInView ? { opacity: 1, scale: 1 } : {}}
+                        transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
+                        className="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-secondary-foreground text-xs rounded-full"
+                      >
+                        <Check className="w-3 h-3 text-primary" />
+                        {item}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
 
-            {/* Efficiency & Economy */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={servicesInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-card rounded-2xl p-6 border border-border/50 shadow-lg"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                <TrendingUp className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="text-xl font-heading font-bold text-foreground mb-4">
-                3) Efficiency & Economy
-              </h3>
-              <div className="space-y-2">
-                {efficiencyItems.map((item, index) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={servicesInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.3, delay: 0.2 + index * 0.05 }}
-                    className="flex items-start gap-2"
-                  >
-                    <ChevronRight className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{item}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+                {/* Regulatory Compliances */}
+                <div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <FileCheck className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-heading font-bold text-secondary-foreground">
+                      2) Regulatory Compliances
+                    </h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {regulatoryComplianceItems.map((item, index) => (
+                      <motion.span
+                        key={item}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={servicesInView ? { opacity: 1, scale: 1 } : {}}
+                        transition={{ duration: 0.3, delay: 0.4 + index * 0.05 }}
+                        className="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-secondary-foreground text-xs rounded-full"
+                      >
+                        <Check className="w-3 h-3 text-primary" />
+                        {item}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Efficiency & Economy */}
+                <div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <TrendingUp className="w-5 h-5 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-heading font-bold text-secondary-foreground">
+                      3) Efficiency & Economy
+                    </h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {efficiencyItems.map((item, index) => (
+                      <motion.span
+                        key={item}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={servicesInView ? { opacity: 1, scale: 1 } : {}}
+                        transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
+                        className="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-secondary-foreground text-xs rounded-full"
+                      >
+                        <Check className="w-3 h-3 text-primary" />
+                        {item}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
