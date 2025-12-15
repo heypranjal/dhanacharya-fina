@@ -21,6 +21,7 @@ import {
   Landmark,
   BadgeCheck,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -172,15 +173,16 @@ const WhatWeDo = () => {
               <p className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed mb-8">
                 Dhanacharya provides you with the strategy, skills and support you need to secure equity funding and assists you in preparing the best pitch to secure committed investments from Angel Investors, VCs or via Crowdfunding, even if you've no previous experience in dealing with investors.
               </p>
-              <motion.a
-                href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-colors"
-              >
-                Learn More
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.a>
+              <Link to="/equityfundraising">
+                <motion.span
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-colors"
+                >
+                  Learn More
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                </motion.span>
+              </Link>
             </motion.div>
 
             <motion.div
