@@ -273,16 +273,19 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Map Section (Optional placeholder) */}
+      {/* Map Section */}
       <section className="h-96 bg-muted/50 relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <MapPin className="w-16 h-16 text-primary/30 mx-auto mb-4" />
-            <p className="text-muted-foreground">
-              D-127, Second Floor, Sector 10, Noida, Uttar Pradesh 201301
-            </p>
-          </div>
-        </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1904.6523397126598!2d77.33244014777!3d28.59088739779683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDM1JzI4LjMiTiA3N8KwMjAnMDEuNyJF!5e0!3m2!1sen!2sin!4v1765790145333!5m2!1sen!2sin"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Dhanacharya Office Location"
+          className="absolute inset-0"
+        />
       </section>
 
       <Footer />
