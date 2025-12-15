@@ -7,6 +7,7 @@ import CTA from "@/components/CTA";
 import Partners from "@/components/Partners";
 import { TestimonialsColumnsSection } from "@/components/ui/testimonials-columns-demo";
 import Footer from "@/components/Footer";
+import CommunityBanner from "@/components/CommunityBanner";
 
 const Index = () => {
   return (
@@ -15,6 +16,7 @@ const Index = () => {
       <Hero />
       <About />
       <Services />
+      <CommunityBanner />
       <WhyChooseUs />
       <Partners />
       <TestimonialsColumnsSection />
