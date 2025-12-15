@@ -23,20 +23,20 @@ const navItems: NavItem[] = [
     href: "#about",
     isRoute: false,
     subItems: [
-      { name: "What we do", href: "#whatwedo", isRoute: false },
+      { name: "What we do", href: "/whatwedo", isRoute: true },
       { name: "Our Team", href: "#team", isRoute: false },
       { name: "Ethics", href: "#ethics", isRoute: false },
       { name: "Careers", href: "#careers", isRoute: false },
     ],
   },
-  { name: "Equity", href: "#equity", isRoute: false },
+  { name: "Equity", href: "/whatwedo#equity", isRoute: false },
   {
     name: "Investments",
-    href: "#investments",
+    href: "/whatwedo#investments",
     isRoute: false,
     subItems: [
-      { name: "Mutual Fund", href: "#mutualfund", isRoute: false },
-      { name: "Calculator", href: "#calculator", isRoute: false },
+      { name: "Mutual Fund", href: "/whatwedo#investments", isRoute: false },
+      { name: "Calculator", href: "/whatwedo#investments", isRoute: false },
     ],
   },
   { name: "Media Coverage", href: "/mediacoverage", isRoute: true },
@@ -125,18 +125,34 @@ const Header = () => {
                           transition={{ duration: 0.2 }}
                           className="absolute top-full left-0 mt-2 min-w-[180px] bg-secondary border border-secondary-foreground/10 rounded-xl shadow-xl overflow-hidden"
                         >
-                          {item.subItems.map((subItem, subIndex) => (
-                            <motion.a
-                              key={subItem.name}
-                              href={subItem.href}
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: subIndex * 0.05 }}
-                              className="block px-4 py-3 text-sm text-secondary-foreground/80 hover:text-primary hover:bg-primary/10 transition-colors"
-                            >
-                              {subItem.name}
-                            </motion.a>
-                          ))}
+                          {item.subItems.map((subItem, subIndex) =>
+                            subItem.isRoute ? (
+                              <motion.div
+                                key={subItem.name}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: subIndex * 0.05 }}
+                              >
+                                <Link
+                                  to={subItem.href}
+                                  className="block px-4 py-3 text-sm text-secondary-foreground/80 hover:text-primary hover:bg-primary/10 transition-colors"
+                                >
+                                  {subItem.name}
+                                </Link>
+                              </motion.div>
+                            ) : (
+                              <motion.a
+                                key={subItem.name}
+                                href={subItem.href}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: subIndex * 0.05 }}
+                                className="block px-4 py-3 text-sm text-secondary-foreground/80 hover:text-primary hover:bg-primary/10 transition-colors"
+                              >
+                                {subItem.name}
+                              </motion.a>
+                            )
+                          )}
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -245,16 +261,27 @@ const Header = () => {
                             exit={{ opacity: 0, height: 0 }}
                             className="pl-4 border-l-2 border-primary/30 ml-2"
                           >
-                            {item.subItems.map((subItem) => (
-                              <a
-                                key={subItem.name}
-                                href={subItem.href}
-                                className="block py-2 text-sm text-secondary-foreground/70 hover:text-primary transition-colors"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                              >
-                                {subItem.name}
-                              </a>
-                            ))}
+                            {item.subItems.map((subItem) =>
+                              subItem.isRoute ? (
+                                <Link
+                                  key={subItem.name}
+                                  to={subItem.href}
+                                  className="block py-2 text-sm text-secondary-foreground/70 hover:text-primary transition-colors"
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                  {subItem.name}
+                                </Link>
+                              ) : (
+                                <a
+                                  key={subItem.name}
+                                  href={subItem.href}
+                                  className="block py-2 text-sm text-secondary-foreground/70 hover:text-primary transition-colors"
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                  {subItem.name}
+                                </a>
+                              )
+                            )}
                           </motion.div>
                         )}
                       </AnimatePresence>
