@@ -27,7 +27,7 @@ const Footer = () => {
     { icon: Facebook, href: "#" },
     { icon: Twitter, href: "#" },
     { icon: Linkedin, href: "#" },
-    { icon: Instagram, href: "#" },
+    { icon: Instagram, href: "https://www.instagram.com/dhanacharya_advisors?igsh=MWk3NmM5OTF6YmYzbQ%3D%3D&utm_source=qr" },
   ];
 
   const containerVariants = {
@@ -193,7 +193,7 @@ const Footer = () => {
                   <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
                 </motion.div>
                 <span className="text-xs sm:text-sm text-secondary-foreground/70 group-hover:text-secondary-foreground transition-colors">
-                  D-22, First floor, Sector 3,<br />Noida 201301
+                  D-127, Second Floor, Sector 10,<br />Noida, Uttar Pradesh 201301
                 </span>
               </motion.li>
               <motion.li
@@ -211,10 +211,10 @@ const Footer = () => {
                 </motion.div>
                 <div className="flex flex-col">
                   <a href="tel:+918285363331" className="text-xs sm:text-sm text-secondary-foreground/70 hover:text-primary transition-colors">
-                    +91 828-536-3331
+                    +91 82853 63331
                   </a>
-                  <a href="tel:+918076542631" className="text-xs sm:text-sm text-secondary-foreground/70 hover:text-primary transition-colors">
-                    +91 807-654-2631
+                  <a href="tel:+917838231007" className="text-xs sm:text-sm text-secondary-foreground/70 hover:text-primary transition-colors">
+                    +91 78382 31007
                   </a>
                 </div>
               </motion.li>

@@ -42,12 +42,12 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Address",
-      details: ["D-22, First floor, Sector 3,", "Noida 201301"],
+      details: ["D-127, Second Floor, Sector 10,", "Noida, Uttar Pradesh 201301"],
     },
     {
       icon: Phone,
       title: "Phone Number",
-      details: ["+91 828-536-3331", "+91 807-654-2631"],
+      details: ["+91 82853 63331", "+91 78382 31007"],
     },
     {
       icon: Mail,
@@ -63,7 +63,7 @@ const Contact = () => {
 
   const socialLinks = [
     { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Instagram, href: "https://www.instagram.com/dhanacharya_advisors?igsh=MWk3NmM5OTF6YmYzbQ%3D%3D&utm_source=qr", label: "Instagram" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
   ];
 
@@ -279,7 +279,7 @@ const Contact = () => {
           <div className="text-center">
             <MapPin className="w-16 h-16 text-primary/30 mx-auto mb-4" />
             <p className="text-muted-foreground">
-              D-22, First floor, Sector 3, Noida 201301
+              D-127, Second Floor, Sector 10, Noida, Uttar Pradesh 201301
             </p>
           </div>
         </div>
