@@ -274,18 +274,51 @@ const Contact = () => {
       </section>
 
       {/* Map Section */}
-      <section className="h-96 bg-muted/50 relative">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1904.6523397126598!2d77.33244014777!3d28.59088739779683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDM1JzI4LjMiTiA3N8KwMjAnMDEuNyJF!5e0!3m2!1sen!2sin!4v1765790145333!5m2!1sen!2sin"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Dhanacharya Office Location"
-          className="absolute inset-0"
-        />
+      <section className="py-16 sm:py-20 lg:py-24 bg-secondary relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-10 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-5 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl" />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-10 sm:mb-12"
+          >
+            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+              Find Us
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-secondary-foreground mb-4">
+              Our <span className="text-primary">Location</span>
+            </h2>
+            <p className="text-sm sm:text-base text-secondary-foreground/70 max-w-xl mx-auto">
+              Visit us at our office in Noida, Uttar Pradesh
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-primary/20 shadow-2xl"
+          >
+            <div className="h-80 sm:h-96 lg:h-[450px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1904.6523397126598!2d77.33244014777!3d28.59088739779683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDM1JzI4LjMiTiA3N8KwMjAnMDEuNyJF!5e0!3m2!1sen!2sin!4v1765790145333!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Dhanacharya Office Location"
+              />
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       <Footer />
