@@ -45,7 +45,7 @@ const CTA = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 lg:gap-6 mb-8 sm:mb-10 lg:mb-12"
           >
-            <motion.a
+            {/* <motion.a
               href="tel:+919866052111"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -55,12 +55,12 @@ const CTA = () => {
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-primary-foreground" />
               </div>
               <div className="text-left">
-                <p className="text-xs sm:text-sm text-secondary-foreground/60">Hyderabad</p>
+                <p className="text-xs sm:text-sm text-secondary-foreground/60">Noida</p>
                 <p className="text-sm sm:text-base lg:text-lg font-semibold text-secondary-foreground">+91 98660 52111</p>
               </div>
-            </motion.a>
+            </motion.a> */}
 
-            <motion.a
+            {/* <motion.a
               href="tel:+918666052111"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -73,7 +73,7 @@ const CTA = () => {
                 <p className="text-xs sm:text-sm text-secondary-foreground/60">Vijayawada</p>
                 <p className="text-sm sm:text-base lg:text-lg font-semibold text-secondary-foreground">+91 86660 52111</p>
               </div>
-            </motion.a>
+            </motion.a> */}
           </motion.div>
 
           <motion.div
