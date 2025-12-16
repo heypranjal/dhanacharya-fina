@@ -23,20 +23,34 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+  try {
+    const res = await fetch("http://localhost:5050/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
 
-    setIsSubmitting(false);
+    if (!res.ok) throw new Error("Failed");
+
     setIsSubmitted(true);
     setFormData({ name: "", email: "", phone: "", description: "" });
 
-    // Reset success message after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000);
-  };
+  } catch (error) {
+    alert("Something went wrong. Please try again.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
+
+
 
   const contactInfo = [
     {
