@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export interface Testimonial {
   text: string;
-  image: string;
+  image?: string;
   name: string;
   role: string;
 }
@@ -31,7 +31,7 @@ export const TestimonialsColumn = (props: {
         {[
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
-              {props.testimonials.map(({ text, image, name, role }, i) => (
+              {props.testimonials.map(({ text, name, role }, i) => (
                 <div
                   className="p-8 rounded-3xl border border-border/50 bg-card card-shadow max-w-xs w-full"
                   key={i}
@@ -40,13 +40,6 @@ export const TestimonialsColumn = (props: {
                     "{text}"
                   </div>
                   <div className="flex items-center gap-3 mt-5">
-                    <img
-                      width={40}
-                      height={40}
-                      src={image}
-                      alt={name}
-                      className="h-10 w-10 rounded-full object-cover border-2 border-primary/20"
-                    />
                     <div className="flex flex-col">
                       <div className="font-heading font-medium tracking-tight leading-5 text-foreground">
                         {name}

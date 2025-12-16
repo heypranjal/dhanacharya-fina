@@ -24,29 +24,100 @@ const Careers = () => {
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-secondary-foreground mb-6"
+              transition={{ duration: 0.8 }}
             >
-              <span className="text-primary">Careers</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg sm:text-xl text-secondary-foreground/70"
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-secondary-foreground mb-6"
+              >
+                <span className="text-primary">Careers</span>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-lg sm:text-xl text-secondary-foreground/70"
+              >
+                We provide challenging opportunities to our employees.
+              </motion.p>
+            </motion.div>
+
+            {/* Career Growth Ladder Visual */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={heroInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="hidden lg:flex justify-center"
             >
-              We provide challenging opportunities to our employees.
-            </motion.p>
-          </motion.div>
+              <div className="relative w-64 h-64">
+                {/* Ascending steps */}
+                {[0, 1, 2, 3, 4].map((step, index) => (
+                  <motion.div
+                    key={step}
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    animate={heroInView ? { scaleX: 1, opacity: 1 } : {}}
+                    transition={{ duration: 0.4, delay: 0.4 + index * 0.15 }}
+                    className="absolute origin-left"
+                    style={{
+                      bottom: `${20 + step * 40}px`,
+                      left: `${step * 30}px`,
+                      width: `${120 - step * 15}px`,
+                    }}
+                  >
+                    <div
+                      className="h-8 rounded-lg"
+                      style={{
+                        background: `rgba(var(--primary), ${0.2 + step * 0.15})`,
+                      }}
+                    />
+                  </motion.div>
+                ))}
+
+                {/* Person climbing icon */}
+                <motion.div
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={heroInView ? { y: 0, opacity: 1 } : {}}
+                  transition={{ duration: 0.6, delay: 1.2, type: "spring" }}
+                  className="absolute top-4 right-8"
+                >
+                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                    <Users className="w-5 h-5 text-primary-foreground" />
+                  </div>
+                </motion.div>
+
+                {/* Star at top */}
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={heroInView ? { scale: 1, rotate: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 1.4, type: "spring" }}
+                  className="absolute -top-2 right-4 w-8 h-8"
+                >
+                  <div className="w-full h-full bg-primary/40 rotate-45" />
+                  <div className="absolute inset-1 bg-primary/60 rotate-45" />
+                </motion.div>
+
+                {/* Arrow pointing up */}
+                <motion.div
+                  initial={{ scaleY: 0 }}
+                  animate={heroInView ? { scaleY: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                  className="absolute left-8 bottom-4 w-1 h-48 bg-primary/30 origin-bottom"
+                />
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={heroInView ? { scale: 1 } : {}}
+                  transition={{ duration: 0.3, delay: 1.1 }}
+                  className="absolute left-6 top-8 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[12px] border-b-primary/40"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -104,22 +175,48 @@ const Careers = () => {
                 </p>
               </div>
 
-              {/* Values */}
-              <div className="grid sm:grid-cols-3 gap-4 mt-8">
+              {/* Three Pillars Visual */}
+              <div className="grid sm:grid-cols-3 gap-6 mt-8">
                 {[
-                  { icon: Target, label: "Talent" },
-                  { icon: Heart, label: "Passion" },
-                  { icon: Users, label: "Integrity" },
+                  { icon: Target, label: "Talent", height: 120, delay: 0.3 },
+                  { icon: Heart, label: "Passion", height: 140, delay: 0.45 },
+                  { icon: Users, label: "Integrity", height: 100, delay: 0.6 },
                 ].map((item, index) => (
                   <motion.div
                     key={item.label}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={teamInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                    className="flex items-center gap-3 bg-muted/50 rounded-xl p-4"
+                    transition={{ duration: 0.5, delay: item.delay }}
+                    className="flex flex-col items-center"
                   >
-                    <item.icon className="w-5 h-5 text-primary" />
-                    <span className="font-medium text-foreground">{item.label}</span>
+                    {/* Pillar */}
+                    <div className="relative w-full max-w-[100px]">
+                      <motion.div
+                        initial={{ scaleY: 0 }}
+                        animate={teamInView ? { scaleY: 1 } : {}}
+                        transition={{ duration: 0.6, delay: item.delay + 0.2 }}
+                        className="origin-bottom rounded-t-lg bg-gradient-to-t from-primary/40 to-primary/20"
+                        style={{ height: `${item.height}px` }}
+                      />
+                      {/* Icon on top */}
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={teamInView ? { scale: 1 } : {}}
+                        transition={{ duration: 0.4, delay: item.delay + 0.5, type: "spring" }}
+                        className="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-primary flex items-center justify-center shadow-lg"
+                      >
+                        <item.icon className="w-5 h-5 text-primary-foreground" />
+                      </motion.div>
+                    </div>
+                    {/* Label */}
+                    <motion.span
+                      initial={{ opacity: 0 }}
+                      animate={teamInView ? { opacity: 1 } : {}}
+                      transition={{ duration: 0.3, delay: item.delay + 0.7 }}
+                      className="mt-4 font-heading font-semibold text-foreground"
+                    >
+                      {item.label}
+                    </motion.span>
                   </motion.div>
                 ))}
               </div>

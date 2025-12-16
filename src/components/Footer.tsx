@@ -1,7 +1,14 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { MapPin, Phone, Mail, Facebook, Linkedin, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
+
+// Custom X (Twitter) icon component since lucide-react Twitter is deprecated
+const XIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 const Footer = () => {
   const ref = useRef(null);
@@ -9,25 +16,31 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: "About Us", href: "#about", isRoute: false },
-    { name: "Services", href: "#services", isRoute: false },
+    { name: "Home", href: "/", isRoute: true },
+    { name: "What We Do", href: "/whatwedo", isRoute: true },
+    { name: "Our Team", href: "/ourteam", isRoute: true },
     { name: "Media Coverage", href: "/mediacoverage", isRoute: true },
     { name: "Contact", href: "/contact", isRoute: true },
-    { name: "Privacy Policy", href: "#", isRoute: false },
+    { name: "Ethics", href: "/ethics", isRoute: true },
+    { name: "Careers", href: "/careers", isRoute: true },
   ];
 
   const services = [
-    "Equity Fund Raising",
-    "Investments",
-    "Corporate Advisory",
-    "Loans",
+    { name: "Equity Fund Raising", href: "/equityfundraising" },
+    { name: "Mutual Funds", href: "/mutualfunds" },
+    { name: "Taxation Advisory", href: "/taxation-advisory" },
+    { name: "Auditing & Assurance", href: "/auditing-assurance" },
+    { name: "Regulatory Compliance", href: "/regulatory-compliance" },
+    { name: "Registration & Licenses", href: "/registration-licenses" },
+    { name: "Intellectual Property", href: "/intellectual-property" },
+    { name: "Start Your Business", href: "/start-your-business" },
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "https://www.facebook.com/share/1BqoZe2h8g/?mibextid=wwXIfr" },
-    { icon: Twitter, href: "https://x.com/dhanacharyallp?s=11" },
-    { icon: Linkedin, href: "https://www.linkedin.com/company/dhanacharya-advisors-llp/posts/?feedView=all" },
-    { icon: Instagram, href: "https://www.instagram.com/dhanacharya_advisors?igsh=MWk3NmM5OTF6YmYzbQ%3D%3D&utm_source=qr" },
+    { icon: Facebook, href: "https://www.facebook.com/share/1BqoZe2h8g/?mibextid=wwXIfr", label: "Facebook" },
+    { icon: XIcon, href: "https://x.com/dhanacharyallp?s=11", label: "X (Twitter)" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/dhanacharya-advisors-llp/posts/?feedView=all", label: "LinkedIn" },
+    { icon: Instagram, href: "https://www.instagram.com/dhanacharya_advisors?igsh=MWk3NmM5OTF6YmYzbQ%3D%3D&utm_source=qr", label: "Instagram" },
   ];
 
   const containerVariants = {
@@ -85,6 +98,9 @@ const Footer = () => {
                 <motion.a
                   key={index}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
                   variants={itemVariants}
                   whileHover={{ scale: 1.15, y: -5, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
@@ -153,18 +169,18 @@ const Footer = () => {
             >
               {services.map((service, index) => (
                 <motion.li
-                  key={service}
+                  key={service.name}
                   variants={itemVariants}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ x: 5 }}
                 >
-                  <a
-                    href="#services"
+                  <Link
+                    to={service.href}
                     className="text-sm sm:text-base text-secondary-foreground/70 hover:text-primary transition-colors inline-flex items-center gap-2 group"
                   >
                     <span className="w-0 h-0.5 bg-primary group-hover:w-4 transition-all duration-300" />
-                    {service}
-                  </a>
+                    {service.name}
+                  </Link>
                 </motion.li>
               ))}
             </motion.ul>

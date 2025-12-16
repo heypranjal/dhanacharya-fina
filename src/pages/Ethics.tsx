@@ -1,6 +1,6 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { Shield, ChevronRight, Scale } from "lucide-react";
+import { Shield, ChevronRight } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -90,56 +90,238 @@ const Ethics = () => {
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-secondary-foreground mb-6"
+              transition={{ duration: 0.8 }}
             >
-              <span className="text-primary">Ethics</span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg sm:text-xl text-secondary-foreground/70"
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-secondary-foreground mb-6"
+              >
+                <span className="text-primary">Ethics</span>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={heroInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-lg sm:text-xl text-secondary-foreground/70"
+              >
+                We have highest commitment
+              </motion.p>
+            </motion.div>
+
+            {/* Scales of Justice Visual */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={heroInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="hidden lg:flex justify-center"
             >
-              We have highest commitment
-            </motion.p>
-          </motion.div>
+              <div className="relative w-64 h-64">
+                {/* Center pillar */}
+                <motion.div
+                  initial={{ scaleY: 0 }}
+                  animate={heroInView ? { scaleY: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="absolute left-1/2 -translate-x-1/2 bottom-0 w-4 h-40 bg-primary rounded-t-full origin-bottom"
+                />
+
+                {/* Top circle */}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={heroInView ? { scale: 1 } : {}}
+                  transition={{ duration: 0.4, delay: 0.6, type: "spring" }}
+                  className="absolute left-1/2 -translate-x-1/2 top-12 w-8 h-8 bg-primary rounded-full"
+                />
+
+                {/* Balance beam */}
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  animate={heroInView ? { scaleX: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                  className="absolute top-16 left-1/2 -translate-x-1/2 w-48 h-2 bg-primary/80 rounded-full"
+                />
+
+                {/* Left pan strings */}
+                <motion.div
+                  initial={{ height: 0 }}
+                  animate={heroInView ? { height: 40 } : {}}
+                  transition={{ duration: 0.3, delay: 0.9 }}
+                  className="absolute top-[72px] left-[32px] w-0.5 bg-primary/60"
+                />
+                <motion.div
+                  initial={{ height: 0 }}
+                  animate={heroInView ? { height: 40 } : {}}
+                  transition={{ duration: 0.3, delay: 0.95 }}
+                  className="absolute top-[72px] left-[56px] w-0.5 bg-primary/60"
+                />
+
+                {/* Left pan */}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={heroInView ? { scale: 1 } : {}}
+                  transition={{ duration: 0.4, delay: 1.1, type: "spring" }}
+                  className="absolute top-28 left-4 w-16 h-4 bg-primary/40 rounded-b-full"
+                />
+
+                {/* Right pan strings */}
+                <motion.div
+                  initial={{ height: 0 }}
+                  animate={heroInView ? { height: 40 } : {}}
+                  transition={{ duration: 0.3, delay: 0.9 }}
+                  className="absolute top-[72px] right-[32px] w-0.5 bg-primary/60"
+                />
+                <motion.div
+                  initial={{ height: 0 }}
+                  animate={heroInView ? { height: 40 } : {}}
+                  transition={{ duration: 0.3, delay: 0.95 }}
+                  className="absolute top-[72px] right-[56px] w-0.5 bg-primary/60"
+                />
+
+                {/* Right pan */}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={heroInView ? { scale: 1 } : {}}
+                  transition={{ duration: 0.4, delay: 1.1, type: "spring" }}
+                  className="absolute top-28 right-4 w-16 h-4 bg-primary/40 rounded-b-full"
+                />
+
+                {/* Base */}
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  animate={heroInView ? { scaleX: 1 } : {}}
+                  transition={{ duration: 0.4, delay: 0.3 }}
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-3 bg-primary/60 rounded-full"
+                />
+
+                {/* Decorative circles */}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={heroInView ? { scale: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 1.3 }}
+                  className="absolute top-24 left-8 w-8 h-8 rounded-full border-2 border-primary/20"
+                />
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={heroInView ? { scale: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 1.4 }}
+                  className="absolute top-24 right-8 w-8 h-8 rounded-full border-2 border-primary/20"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Why Ethical Culture Section */}
       <section ref={whyRef} className="py-16 sm:py-20 lg:py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={whyInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl mx-auto"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground mb-8">
-              Why ethical culture is <span className="text-primary">needed?</span>
-            </h2>
-            <div className="space-y-6 text-muted-foreground">
-              <p className="leading-relaxed text-base sm:text-lg">
-                The stock market scam of 1992 is considered one of the worst violations of ethics in the Indian financial industry.
-              </p>
-              <p className="leading-relaxed text-base sm:text-lg">
-                This has given us countless scandals and news stories about professionals who have defrauded investors, employers, and peers. There is no doubt that greed is a powerful emotion, but sometimes unethical behavior boils down to lack of education on basic principles of financial standards. The finance industry has been singled out as a case of rampant unethical behavior and corporate greed.
-              </p>
-              <p className="leading-relaxed text-base sm:text-lg">
-                Investors intrinsically trust financial institutions with their money and expect them to invest it with integrity. All market risks considered, investors expect the highest return and put their faith in the hands of professionals. Upholding investor confidence is vital to the success of the investment industry. High ethical standards are critical to maintaining the public's trust in financial markets and in the investment profession.
-              </p>
-            </div>
-          </motion.div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            {/* Warning/Trust Visual */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={whyInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8 }}
+              className="hidden lg:flex justify-center order-2 lg:order-1"
+            >
+              <div className="relative w-64 h-64">
+                {/* Outer broken circle */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={whyInView ? { opacity: 1 } : {}}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="absolute inset-4 rounded-full border-4 border-dashed border-destructive/30"
+                />
+
+                {/* Warning triangle */}
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={whyInView ? { scale: 1, rotate: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.5, type: "spring" }}
+                  className="absolute inset-0 flex items-center justify-center"
+                >
+                  <div className="relative">
+                    <div
+                      className="w-24 h-24 bg-destructive/20"
+                      style={{ clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)" }}
+                    />
+                    <div
+                      className="absolute inset-2 bg-destructive/40"
+                      style={{ clipPath: "polygon(50% 10%, 10% 90%, 90% 90%)" }}
+                    />
+                    {/* Exclamation mark */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={whyInView ? { opacity: 1 } : {}}
+                      transition={{ duration: 0.3, delay: 0.9 }}
+                      className="absolute top-8 left-1/2 -translate-x-1/2 w-2 h-6 bg-destructive rounded-full"
+                    />
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={whyInView ? { opacity: 1 } : {}}
+                      transition={{ duration: 0.3, delay: 1 }}
+                      className="absolute top-16 left-1/2 -translate-x-1/2 w-2 h-2 bg-destructive rounded-full"
+                    />
+                  </div>
+                </motion.div>
+
+                {/* Crack lines */}
+                {[45, 135, 225, 315].map((angle, index) => (
+                  <motion.div
+                    key={angle}
+                    initial={{ scaleX: 0 }}
+                    animate={whyInView ? { scaleX: 1 } : {}}
+                    transition={{ duration: 0.3, delay: 1.1 + index * 0.1 }}
+                    className="absolute top-1/2 left-1/2 w-8 h-0.5 bg-destructive/40 origin-left"
+                    style={{ transform: `translate(-50%, -50%) rotate(${angle}deg) translateX(60px)` }}
+                  />
+                ))}
+
+                {/* Scattered dots representing broken trust */}
+                {[0, 60, 120, 180, 240, 300].map((angle, index) => {
+                  const radian = (angle * Math.PI) / 180;
+                  const x = 50 + 45 * Math.cos(radian);
+                  const y = 50 + 45 * Math.sin(radian);
+                  return (
+                    <motion.div
+                      key={angle}
+                      initial={{ scale: 0 }}
+                      animate={whyInView ? { scale: 1 } : {}}
+                      transition={{ duration: 0.3, delay: 1.3 + index * 0.05 }}
+                      className="absolute w-2 h-2 bg-destructive/30 rounded-full"
+                      style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%, -50%)" }}
+                    />
+                  );
+                })}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={whyInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8 }}
+              className="order-1 lg:order-2"
+            >
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-foreground mb-8">
+                Why ethical culture is <span className="text-primary">needed?</span>
+              </h2>
+              <div className="space-y-6 text-muted-foreground">
+                <p className="leading-relaxed text-base sm:text-lg">
+                  The stock market scam of 1992 is considered one of the worst violations of ethics in the Indian financial industry.
+                </p>
+                <p className="leading-relaxed text-base sm:text-lg">
+                  This has given us countless scandals and news stories about professionals who have defrauded investors, employers, and peers. There is no doubt that greed is a powerful emotion, but sometimes unethical behavior boils down to lack of education on basic principles of financial standards. The finance industry has been singled out as a case of rampant unethical behavior and corporate greed.
+                </p>
+                <p className="leading-relaxed text-base sm:text-lg">
+                  Investors intrinsically trust financial institutions with their money and expect them to invest it with integrity. All market risks considered, investors expect the highest return and put their faith in the hands of professionals. Upholding investor confidence is vital to the success of the investment industry. High ethical standards are critical to maintaining the public's trust in financial markets and in the investment profession.
+                </p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

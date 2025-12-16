@@ -6,25 +6,25 @@ const services = [
   {
     icon: TrendingUp,
     title: "Equity Fund Raising",
-    description: "Strategic equity solutions for businesses looking to grow and expand their operations through capital infusion.",
+    description: "We have an empowered network of Angel investors & VCs that ensures investee startups to strategise & have easy access to external funds to scale up constantly.",
     color: "from-blue-500/20 to-blue-600/10",
   },
   {
     icon: PiggyBank,
     title: "Investments",
-    description: "Comprehensive investment advisory services tailored to maximize your returns while managing risk effectively.",
+    description: "We exist to reach to the common man with foundation stone for creating long-term wealth for the investor through various financial products.",
     color: "from-green-500/20 to-green-600/10",
   },
   {
     icon: Briefcase,
     title: "Corporate Advisory",
-    description: "Expert corporate advisory services including M&A, restructuring, and strategic business consulting.",
+    description: "Our multi disciplinary service is structured under taxation, legal & regulatory compliances verticals.",
     color: "from-purple-500/20 to-purple-600/10",
   },
   {
     icon: Wallet,
     title: "Loans",
-    description: "Flexible loan solutions for personal and business needs with competitive rates and quick processing.",
+    description: "We work with our lending partners who strive to get you the best loans and Credit Card deals in just a few clicks.",
     color: "from-orange-500/20 to-orange-600/10",
   },
 ];
@@ -115,7 +115,7 @@ const Services = () => {
             Our Services
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4 sm:mb-6">
-            Practice <span className="text-primary">Areas</span>
+            Our Practice <span className="text-primary">Areas</span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto px-2">
             Comprehensive financial solutions tailored to help you achieve your financial goals
