@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Phone, Mail, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const CTA = () => {
   const ref = useRef(null);
@@ -84,15 +85,18 @@ const CTA = () => {
             <Button
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 rounded-full text-sm sm:text-base lg:text-lg group"
+              asChild
             >
-              Schedule a Consultation
-              <motion.span
-                className="inline-block ml-2"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-              </motion.span>
+              <Link to="/contact">
+                Schedule a Consultation
+                <motion.span
+                  className="inline-block ml-2"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                </motion.span>
+              </Link>
             </Button>
           </motion.div>
         </div>

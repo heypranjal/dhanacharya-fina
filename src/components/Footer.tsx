@@ -75,9 +75,9 @@ const Footer = () => {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <img
-                src="https://res.cloudinary.com/dadfpmrat/image/upload/v1765623345/Screenshot_2025-12-13_at_4.14.33_PM-removebg-preview_k3xhwt.png"
+                src="https://res.cloudinary.com/dadfpmrat/image/upload/v1766126485/Artboard_10_maqdxl.png"
                 alt="Dhanacharya Financial Advisors"
-                className="h-10 sm:h-12 w-auto object-contain"
+                className="h-56 sm:h-64 w-auto object-contain"
               />
             </motion.div>
             <motion.p

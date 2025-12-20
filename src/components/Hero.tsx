@@ -1,110 +1,121 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { MapPin, Phone } from "lucide-react";
 
 const Hero = () => {
-  const words = ["Wealth", "Future", "Growth", "Goals"];
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 2000);
-    return () => clearInterval(timer);
-  }, []);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, margin: "-100px" });
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.2,
         delayChildren: 0.3,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8 }
+    },
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
+    <section
+      ref={ref}
+      className="relative min-h-screen flex flex-col justify-between overflow-hidden"
+    >
+      {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="https://res.cloudinary.com/dadfpmrat/image/upload/v1765624603/pexels-pixabay-164636_jn3406.jpg"
-          alt="Financial background"
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070"
+          alt="City skyline"
           className="w-full h-full object-cover"
         />
+        {/* Dark overlay */}
         <div className="absolute inset-0 bg-secondary/85" />
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-secondary/50 via-transparent to-secondary/50"
-          animate={{ opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
       </div>
 
-      {/* Content */}
+      {/* Main Content */}
       <motion.div
-        className="relative z-10 container mx-auto px-4 text-center"
+        className="relative z-10 flex-1 flex flex-col justify-center container mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8"
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        animate={isInView ? "visible" : "hidden"}
       >
-        {/* Hero Slogan */}
-        <motion.h1
-          variants={itemVariants}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-secondary-foreground leading-tight mb-6"
-        >
-          <span>Your&nbsp;</span>
+        <div className="max-w-5xl">
+          {/* Weekly Mantra Label */}
+          <motion.div
+            variants={itemVariants}
+            className="flex items-center gap-4 mb-8"
+          >
+            <div className="w-12 sm:w-16 h-px bg-primary" />
+            <span className="text-primary text-sm sm:text-base font-medium tracking-wide">
+              Weekly Mantra
+            </span>
+          </motion.div>
 
-          <span className="inline-block text-primary w-[6ch] text-left">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={words[index]}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.25, ease: "easeOut" }}
-                className="inline-block"
-              >
-                {words[index]}
-              </motion.span>
-            </AnimatePresence>
-          </span>
+          {/* Quote */}
+          <motion.blockquote
+            variants={itemVariants}
+            className="mb-8"
+          >
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-heading font-semibold text-secondary-foreground leading-tight">
+              "Consistent wealth creation comes from early access to high-quality businesses and disciplined capital allocation — enabled by technology, driven by judgment."
+            </p>
+          </motion.blockquote>
 
-          <span className="-ml-[0.8ch]">, Our Priority</span>
-        </motion.h1>
+          {/* Attribution */}
+          <motion.p
+            variants={itemVariants}
+            className="text-base sm:text-lg md:text-xl font-heading text-primary"
+          >
+            – Team Dhanacharya
+          </motion.p>
+        </div>
+      </motion.div>
 
-        {/* 🔹 SUBTLE ADDITION BELOW HERO (ONLY NEW PART) */}
-        <motion.div
-          variants={itemVariants}
-          className="max-w-3xl mx-auto text-secondary-foreground/65"
-        >
-          <p className="text-sm sm:text-base font-medium mb-2">
-            Professional and Experienced Financial Consultants
-          </p>
-
-          <p className="text-sm sm:text-base md:text-lg font-medium mb-4">
-            Get Progressive Financially
-          </p>
-
-          <p className="text-sm sm:text-base italic leading-relaxed mb-6">
-            “We work as an <span className="font-medium">Acharya</span>{" "}
-            (teacher) of our clients to direct them to raise, use & invest their{" "}
-            <span className="font-medium">Dhan</span> (money) wisely — because
-            we firmly believe that money is a terrible master but can be an
-            excellent servant if one is directed to use it properly.”
-          </p>
-
-          <div className="text-xs sm:text-sm tracking-wide uppercase">
-            <div className="font-semibold text-secondary-foreground">
-              Team Dhanacharya
+      {/* Bottom Contact Section */}
+      <motion.div
+        className="relative z-10 border-t border-secondary-foreground/20"
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: 1 }}
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+            {/* Location */}
+            <div>
+              <div className="flex items-center gap-2 text-primary mb-2">
+                <MapPin className="w-4 h-4" />
+                <span className="text-sm font-medium">Our Location</span>
+              </div>
+              <p className="text-lg sm:text-xl md:text-2xl font-heading font-semibold text-secondary-foreground">
+                Delhi-NCR, India
+              </p>
             </div>
-            <div className="mt-1">We Know Money</div>
+
+            {/* Contact */}
+            <div className="sm:text-right">
+              <div className="flex items-center gap-2 text-primary mb-2 sm:justify-end">
+                <Phone className="w-4 h-4" />
+                <span className="text-sm font-medium">For Consultation</span>
+              </div>
+              <p className="text-lg sm:text-xl md:text-2xl font-heading font-semibold text-secondary-foreground">
+                91-8285363331
+              </p>
+              <p className="text-lg sm:text-xl md:text-2xl font-heading font-semibold text-secondary-foreground">
+                91-8076542631
+              </p>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   );

@@ -5,7 +5,7 @@ import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import CTA from "@/components/CTA";
 import Partners from "@/components/Partners";
-import { TestimonialsColumnsSection } from "@/components/ui/testimonials-columns-demo";
+import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 import CommunityBanner from "@/components/CommunityBanner";
 
@@ -19,7 +19,7 @@ const Index = () => {
       <CommunityBanner />
       <WhyChooseUs />
       <Partners />
-      <TestimonialsColumnsSection />
+      <Testimonials />
       <CTA />
       <Footer />
     </main>

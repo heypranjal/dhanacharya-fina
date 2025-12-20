@@ -121,7 +121,7 @@ const DhanacharyaPreIPOSpecialists = () => {
             >
               <div className="mb-6">
                 <img
-                  src="https://res.cloudinary.com/dadfpmrat/image/upload/v1765623345/Screenshot_2025-12-13_at_4.14.33_PM-removebg-preview_k3xhwt.png"
+                  src="https://res.cloudinary.com/dadfpmrat/image/upload/v1766126485/Artboard_10_maqdxl.png"
                   alt="Dhanacharya Advisors"
                   className="h-16 w-auto"
                 />
