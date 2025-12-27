@@ -20,6 +20,8 @@ import TaxationAdvisory from "./pages/TaxationAdvisory";
 import RegulatoryCompliance from "./pages/RegulatoryCompliance";
 import RegistrationLicenses from "./pages/RegistrationLicenses";
 import IntellectualProperty from "./pages/IntellectualProperty";
+import Blogs from "./pages/Blogs";
+import BlogPost from "./pages/blogs/BlogPost";
 import NotFound from "./pages/NotFound";
 import WhatsAppButton from "./components/WhatsAppButton";
 import ScrollToTop from "./components/ScrollToTop";
@@ -63,6 +65,8 @@ const App = () => (
             <Route path="/regulatory-compliance" element={<RegulatoryCompliance />} />
             <Route path="/registration-licenses" element={<RegistrationLicenses />} />
             <Route path="/intellectual-property" element={<IntellectualProperty />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/:slug" element={<BlogPost />} />
 
             {/* SEO Pages - Pre-IPO & Unlisted Shares Pillar-Cluster */}
             <Route path="/pre-ipo-unlisted-shares-investment-india" element={<PreIPOUnlistedSharesInvestment />} />

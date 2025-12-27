@@ -53,6 +53,7 @@ const navItems: NavItem[] = [
     ],
   },
   { name: "Media Coverage", href: "/mediacoverage", isRoute: true },
+  { name: "Blogs", href: "/blogs", isRoute: true },
   { name: "Contact", href: "/contact", isRoute: true },
 ];
 
