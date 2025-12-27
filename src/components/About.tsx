@@ -7,9 +7,9 @@ const About = () => {
   const isInView = useInView(ref, { once: false, margin: "-100px" });
 
   const features = [
-    { icon: TrendingUp, text: "Strategic Growth" },
-    { icon: Shield, text: "Secure Investments" },
-    { icon: Users, text: "Expert Guidance" },
+    { icon: TrendingUp, text: "Strategic Capital Allocation" },
+    { icon: Shield, text: "Selective Investment Opportunities" },
+    { icon: Users, text: "Experienced Market Judgment" },
   ];
 
   const containerVariants = {
@@ -51,8 +51,8 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4 sm:mb-6 leading-tight"
             >
-              Get Progressive{" "}
-              <span className="text-primary">Financially</span>
+              Progressive Capital.{" "}
+              <span className="text-primary">Disciplined Growth.</span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -60,9 +60,7 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed"
             >
-              The First Step To Your Financial Success Starts Here. We are a team
-              of dedicated financial advisors committed to helping you achieve your
-              financial goals through strategic planning and expert guidance.
+              The first step to meaningful financial progress is clarity of strategy. At Dhanacharya, we work with investors and businesses to structure capital, allocate it intelligently, and compound it over the long term—across public and private markets.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -70,9 +68,7 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8 leading-relaxed"
             >
-              With years of experience in equity fund raising, investments, corporate
-              advisory, and loans, we provide comprehensive financial solutions tailored
-              to your unique needs.
+              Backed by hands-on experience in equity fund-raising, private investments, and corporate advisory, we focus on judgment, alignment, and execution—not generic solutions.
             </motion.p>
 
             <motion.div

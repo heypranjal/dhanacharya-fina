@@ -1,6 +1,6 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Users, Award, Briefcase, Scale, Music, Trophy } from "lucide-react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { Users, Award, Briefcase, Scale, Music, Trophy, ChevronDown, ChevronUp } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -16,19 +16,21 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   {
     name: "Kunal Kapoor",
-    role: "Managing Partner",
+    role: "Founder & Partner",
     title: "Executive Board",
     category: "executive",
     description: [
-      "A qualified CFA from CFA Institute (USA), Kunal holds a Chartered Accountancy background and is a Delhi University graduate.",
-      "He has a rich experience in Equity Research and proprietary trading of stocks with specialisation in fundamental & Technical Analysis.",
-      "He acts in the advisory board of various investment consultancies in Delhi-NCR with a breadth of experience in wealth management.",
-      "He has also served as an auditor in the Statutory Audit team of renowned CA firms of New Delhi & delivered high quality audit and assurance services to top public sector banks (PNB, OBC & others) & big listed corporates.",
+      "Kunal Kapoor is a capital markets professional and business builder known for combining deep market understanding with a highly practical, execution-oriented investment strategy. With extensive exposure to Chartered Accountancy & CFA (US) level financial frameworks, Kunal brings institutional rigor to real-world capital allocation and private market investing.",
+      "Over the years, Kunal has backed multiple private companies across growth stages, working closely with founders on strategy, capital structuring, and investor alignment. Several of these businesses have successfully progressed to public markets, delivering strong returns and meaningful value creation for early investors through profitable exits and long-term compounding.",
+      "He is deeply involved in equity research, investment strategy, and private deal structuring, with a sharp focus on identifying high-growth businesses early, understanding management intent, and aligning the right long-term investors with such opportunities. His approach is not theoretical—it is market-tested, conviction-led, and built on years of hands-on exposure to public and private markets.",
+      "Kunal is recognized for his ability to study macro, sectoral, and business-level trends, convert insights into clear investment theses, and deploy capital with discipline and patience. He actively builds and curates investor networks, enabling selective access to private placements, from early stage to pre-IPO stage investment opportunities, and emerging growth companies.",
+      "As the driving force behind Dhanacharya Advisors LLP, Kunal has played a key role in scaling the firm into a trusted boutique investment banking and private markets advisory platform, working closely with entrepreneurs, family offices, and sophisticated investors. His strength lies in strategic thinking, deal judgment, and long-term relationship building—qualities that define enduring capital franchises.",
+      "A former national-level sportsperson, Kunal brings the same competitive intensity, discipline, and resilience to business and investing, reinforcing his reputation as a decisive yet thoughtful leader in the capital markets ecosystem.",
     ],
     highlights: [
-      "CFA from CFA Institute (USA)",
-      "Chartered Accountant",
-      "National achievements in Table Tennis and Hockey",
+      "CFA (US) & CA Background",
+      "Private Markets & Capital Allocation Expert",
+      "Former National-Level Sportsperson",
     ],
   },
   {
@@ -85,6 +87,7 @@ const OurTeam = () => {
   const heroRef = useRef(null);
   const executiveRef = useRef(null);
   const advisoryRef = useRef(null);
+  const [expandedMember, setExpandedMember] = useState<string | null>(null);
 
   const heroInView = useInView(heroRef, { once: false, margin: "-100px" });
   const executiveInView = useInView(executiveRef, { once: false, margin: "-100px" });
@@ -92,6 +95,10 @@ const OurTeam = () => {
 
   const executiveMembers = teamMembers.filter((m) => m.category === "executive");
   const advisoryMembers = teamMembers.filter((m) => m.category === "advisory");
+
+  const toggleExpanded = (name: string) => {
+    setExpandedMember(expandedMember === name ? null : name);
+  };
 
   return (
     <main className="min-h-screen overflow-x-hidden">
@@ -307,11 +314,57 @@ const OurTeam = () => {
 
                 {/* Description */}
                 <div className="mt-6 space-y-3">
-                  {member.description.map((para, i) => (
-                    <p key={i} className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                      {para}
-                    </p>
-                  ))}
+                  {member.name === "Kunal Kapoor" ? (
+                    <>
+                      {/* Show first paragraph always */}
+                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                        {member.description[0]}
+                      </p>
+
+                      {/* Expandable content */}
+                      <AnimatePresence>
+                        {expandedMember === member.name && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="space-y-3 overflow-hidden"
+                          >
+                            {member.description.slice(1).map((para, i) => (
+                              <p key={i} className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                                {para}
+                              </p>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+
+                      {/* Read More / Read Less Button */}
+                      <button
+                        onClick={() => toggleExpanded(member.name)}
+                        className="inline-flex items-center gap-1.5 text-primary hover:text-primary/80 font-medium text-sm transition-colors mt-2"
+                      >
+                        {expandedMember === member.name ? (
+                          <>
+                            Read Less
+                            <ChevronUp className="w-4 h-4" />
+                          </>
+                        ) : (
+                          <>
+                            Read More
+                            <ChevronDown className="w-4 h-4" />
+                          </>
+                        )}
+                      </button>
+                    </>
+                  ) : (
+                    member.description.map((para, i) => (
+                      <p key={i} className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                        {para}
+                      </p>
+                    ))
+                  )}
                 </div>
               </motion.div>
             ))}
