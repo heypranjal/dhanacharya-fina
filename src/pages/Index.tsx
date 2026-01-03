@@ -7,7 +7,6 @@ import CTA from "@/components/CTA";
 import Partners from "@/components/Partners";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
-import CommunityBanner from "@/components/CommunityBanner";
 
 const Index = () => {
   return (
@@ -16,7 +15,6 @@ const Index = () => {
       <Hero />
       <About />
       <Services />
-      <CommunityBanner />
       <WhyChooseUs />
       <Partners />
       <Testimonials />
