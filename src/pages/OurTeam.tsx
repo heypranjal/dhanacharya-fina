@@ -11,6 +11,8 @@ interface TeamMember {
   description: string[];
   highlights: string[];
   category: "executive" | "advisory";
+  linkedin?: string;
+  image?: string;
 }
 
 const teamMembers: TeamMember[] = [
@@ -19,6 +21,8 @@ const teamMembers: TeamMember[] = [
     role: "Founder & Partner",
     title: "Executive Board",
     category: "executive",
+    linkedin: "https://www.linkedin.com/in/kunal-kapoor-71960198/",
+    image: "https://res.cloudinary.com/dadfpmrat/image/upload/v1767791346/KUNAL_KAPOOR_ouf2ad.jpg",
     description: [
       "Kunal Kapoor is a capital markets professional and business builder known for combining deep market understanding with a highly practical, execution-oriented investment strategy. With extensive exposure to Chartered Accountancy & CFA (US) level financial frameworks, Kunal brings institutional rigor to real-world capital allocation and private market investing.",
       "Over the years, Kunal has backed multiple private companies across growth stages, working closely with founders on strategy, capital structuring, and investor alignment. Several of these businesses have successfully progressed to public markets, delivering strong returns and meaningful value creation for early investors through profitable exits and long-term compounding.",
@@ -38,6 +42,8 @@ const teamMembers: TeamMember[] = [
     role: "Managing Partner",
     title: "Executive Board",
     category: "executive",
+    linkedin: "https://www.linkedin.com/in/dhawalpant/",
+    image: "https://res.cloudinary.com/dadfpmrat/image/upload/v1767791411/dhawal_urnwgb.jpg",
     description: [
       "A Private Equity professional with core competencies in Valuation advisory, Dhawal had been a part of the Private Equity practice of the Data and Information behemoth IHS Markit in Gurgaon.",
       "He is a CFA from CFA Institute, USA & a qualified Chartered Accountant. He is an expert in financial modelling, equity & debt valuations, and Fundamental Analysis. He's a Delhi University commerce graduate as well.",
@@ -46,7 +52,7 @@ const teamMembers: TeamMember[] = [
     highlights: [
       "CFA from CFA Institute (USA)",
       "Chartered Accountant",
-      "Lead vocalist in HigherGround music project",
+      ,
     ],
   },
   {
@@ -279,15 +285,38 @@ const OurTeam = () => {
                 className="bg-card rounded-3xl p-6 sm:p-8 border border-border/50 shadow-xl hover:shadow-2xl transition-shadow"
               >
                 <div className="flex flex-col sm:flex-row sm:items-start gap-6">
-                  {/* Avatar Placeholder */}
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center flex-shrink-0 mx-auto sm:mx-0"
-                  >
-                    <span className="text-3xl sm:text-4xl font-bold text-primary">
-                      {member.name.split(" ").map((n) => n[0]).join("")}
-                    </span>
-                  </motion.div>
+                  {/* Avatar with LinkedIn Icon */}
+                  <div className="relative flex-shrink-0 mx-auto sm:mx-0">
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center overflow-hidden"
+                    >
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <span className="text-3xl sm:text-4xl font-bold text-primary">
+                          {member.name.split(" ").map((n) => n[0]).join("")}
+                        </span>
+                      )}
+                    </motion.div>
+                    {/* LinkedIn Icon */}
+                    {member.linkedin && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute -bottom-2 -right-2 w-8 h-8 bg-[#0A66C2] hover:bg-[#004182] rounded-full flex items-center justify-center shadow-lg transition-colors"
+                      >
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                      </a>
+                    )}
+                  </div>
 
                   <div className="flex-1 text-center sm:text-left">
                     <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium mb-2">
@@ -402,15 +431,38 @@ const OurTeam = () => {
                 className="bg-card rounded-3xl p-6 sm:p-8 border border-border/50 shadow-xl hover:shadow-2xl transition-shadow"
               >
                 <div className="flex flex-col sm:flex-row sm:items-start gap-6">
-                  {/* Avatar Placeholder */}
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center flex-shrink-0 mx-auto sm:mx-0"
-                  >
-                    <span className="text-3xl sm:text-4xl font-bold text-primary">
-                      {member.name.split(" ").map((n) => n[0]).join("")}
-                    </span>
-                  </motion.div>
+                  {/* Avatar with LinkedIn Icon */}
+                  <div className="relative flex-shrink-0 mx-auto sm:mx-0">
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center overflow-hidden"
+                    >
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <span className="text-3xl sm:text-4xl font-bold text-primary">
+                          {member.name.split(" ").map((n) => n[0]).join("")}
+                        </span>
+                      )}
+                    </motion.div>
+                    {/* LinkedIn Icon */}
+                    {member.linkedin && (
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute -bottom-2 -right-2 w-8 h-8 bg-[#0A66C2] hover:bg-[#004182] rounded-full flex items-center justify-center shadow-lg transition-colors"
+                      >
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                      </a>
+                    )}
+                  </div>
 
                   <div className="flex-1 text-center sm:text-left">
                     <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium mb-2">

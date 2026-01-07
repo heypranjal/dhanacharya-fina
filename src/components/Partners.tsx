@@ -3,44 +3,36 @@ import { useRef } from "react";
 
 const partners = [
   {
-    name: "Birla Sun Life",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Aditya_Birla_Group_Logo.svg/200px-Aditya_Birla_Group_Logo.svg.png",
-  },
-  {
-    name: "ICICI Prudential",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/ICICI_Prudential_Life_Logo.svg/200px-ICICI_Prudential_Life_Logo.svg.png",
-  },
-  {
     name: "Tata Mutual Fund",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tata_logo.svg/200px-Tata_logo.svg.png",
+    logo: "https://res.cloudinary.com/dadfpmrat/image/upload/v1767796028/tata_xqmidd.png",
   },
   {
-    name: "SBI Life",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/SBI_Life_Insurance_Logo.svg/200px-SBI_Life_Insurance_Logo.svg.png",
+    name: "SBI Mutual Fund",
+    logo: "https://res.cloudinary.com/dadfpmrat/image/upload/v1767795624/sbi_qlyrfh.png",
   },
   {
-    name: "IDBI Bank",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/IDBI_Bank_Logo.svg/200px-IDBI_Bank_Logo.svg.png",
+    name: "Aditya Birla Sun Life Mutual Fund",
+    logo: "https://res.cloudinary.com/dadfpmrat/image/upload/v1767792772/birla_npfexw.jpg",
   },
   {
-    name: "HDFC Life",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/HDFC_Bank_Logo.svg/200px-HDFC_Bank_Logo.svg.png",
+    name: "UTI Mutual Fund",
+    logo: "https://res.cloudinary.com/dadfpmrat/image/upload/v1767796028/uti_r93elq.jpg",
   },
   {
-    name: "Axis Bank",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Axis_Bank_logo.svg/200px-Axis_Bank_logo.svg.png",
+    name: "ICICI Prudential Mutual Fund",
+    logo: "https://res.cloudinary.com/dadfpmrat/image/upload/v1767796028/icici_nykobj.jpg",
   },
   {
-    name: "Kotak Mahindra",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Kotak_Mahindra_Bank_logo.svg/200px-Kotak_Mahindra_Bank_logo.svg.png",
+    name: "Indiabulls Mutual Fund",
+    logo: "https://res.cloudinary.com/dadfpmrat/image/upload/v1767796273/indiabulls_bsvaw6.png",
   },
   {
-    name: "Reliance",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Reliance_Industries_Logo.svg/200px-Reliance_Industries_Logo.svg.png",
+    name: "HDFC Mutual Fund",
+    logo: "https://res.cloudinary.com/dadfpmrat/image/upload/v1767796274/hdfc_p5pjab.png",
   },
   {
-    name: "Bajaj Finserv",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Bajaj_Finserv_Logo.svg/200px-Bajaj_Finserv_Logo.svg.png",
+    name: "Reliance Mutual Fund",
+    logo: "https://res.cloudinary.com/dadfpmrat/image/upload/v1767796274/reliance_iy5fzc.avif",
   },
 ];
 
@@ -79,7 +71,7 @@ const Partners = () => {
           animate={{ x: [0, -50 * partners.length] }}
           transition={{
             x: {
-              duration: 25,
+              duration: 30,
               repeat: Infinity,
               ease: "linear",
             }
@@ -90,23 +82,22 @@ const Partners = () => {
             <motion.div
               key={index}
               whileHover={{ scale: 1.05 }}
-              className="flex-shrink-0 bg-card rounded-xl sm:rounded-2xl px-4 sm:px-6 lg:px-8 py-3 sm:py-4 lg:py-6 border border-border/50 hover:border-primary/50 hover:shadow-lg transition-all duration-300 cursor-pointer group"
+              className="flex-shrink-0 bg-card rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-border/50 hover:border-primary/50 hover:shadow-lg transition-all duration-300 cursor-pointer group"
             >
-              <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-lg sm:rounded-xl bg-white flex items-center justify-center p-1.5 sm:p-2">
+              <div className="flex flex-col items-center gap-3">
+                <div className="w-24 h-16 sm:w-32 sm:h-20 lg:w-40 lg:h-24 bg-white rounded-lg flex items-center justify-center p-3 sm:p-4 shadow-sm">
                   <img
                     src={partner.logo}
                     alt={partner.name}
                     className="w-full h-full object-contain"
                     onError={(e) => {
-                      // Fallback to first letter if image fails to load
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
-                      target.parentElement!.innerHTML = `<span class="text-base sm:text-lg lg:text-xl font-heading font-bold text-primary">${partner.name.charAt(0)}</span>`;
+                      target.parentElement!.innerHTML = `<span class="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-primary">${partner.name.split(' ')[0].charAt(0)}${partner.name.split(' ').length > 1 ? partner.name.split(' ')[1].charAt(0) : ''}</span>`;
                     }}
                   />
                 </div>
-                <span className="text-sm sm:text-base lg:text-lg font-medium text-foreground whitespace-nowrap">
+                <span className="text-xs sm:text-sm font-medium text-muted-foreground text-center max-w-[120px] sm:max-w-[140px] lg:max-w-[160px] line-clamp-2">
                   {partner.name}
                 </span>
               </div>

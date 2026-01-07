@@ -1,12 +1,11 @@
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { Users, BarChart3, Building2, Rocket } from "lucide-react";
+import { Users, BarChart3, Rocket } from "lucide-react";
 
 const stats = [
-  { icon: Users, value: 500, suffix: "+", label: "Happy Clients", prefix: "" },
-  { icon: BarChart3, value: 1000, suffix: " Lacs+", label: "Assets Under Management", prefix: "" },
-  { icon: Building2, value: 45000, suffix: " Lacs+", label: "Loans Disbursed", prefix: "" },
-  { icon: Rocket, value: 45, suffix: "+", label: "Startups Funded", prefix: "" },
+  { icon: Users, value: 200, suffix: "+", label: "Client Base", prefix: "" },
+  { icon: Rocket, value: 100, suffix: "+", label: "Startups", prefix: "" },
+  { icon: BarChart3, value: 500, suffix: "+ Cr.", label: "Securities Changed Hands", prefix: "" },
 ];
 
 const AnimatedNumber = ({ value, suffix, prefix }: { value: number; suffix: string; prefix: string }) => {
@@ -68,7 +67,7 @@ const Statistics = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}

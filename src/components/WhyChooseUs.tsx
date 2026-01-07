@@ -2,10 +2,9 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
 const stats = [
-  { value: 500, suffix: "+", label: "Satisfied Client Base" },
-  { value: 1000, suffix: " Lacs+", label: "Assets Under Management" },
-  { value: 45000, suffix: " Lacs+", label: "Amount Of Loans Disbursed" },
-  { value: 45, suffix: "+", label: "Start-Ups Been Assisted For Fund Raising" },
+  { value: 200, suffix: "+", label: "Client Base" },
+  { value: 100, suffix: "+", label: "Startups" },
+  { value: 500, suffix: "+ Cr.", label: "Securities Changed Hands through Dhanacharya" },
 ];
 
 const features = [
