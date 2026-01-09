@@ -6,6 +6,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import CTA from "@/components/CTA";
 import Partners from "@/components/Partners";
 import Testimonials from "@/components/Testimonials";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -19,6 +20,7 @@ const Index = () => {
       <Partners />
       <Testimonials />
       <CTA />
+      <WhatsAppCommunity />
       <Footer />
     </main>
   );

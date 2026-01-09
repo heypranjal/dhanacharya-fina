@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Building, User, Handshake, Scale, Heart, FileText, ChevronRight, Check } from "lucide-react";
 import Header from "@/components/Header";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 
 const legalEntities = [
@@ -327,6 +328,7 @@ const StartYourBusiness = () => {
         </div>
       </section>
 
+      <WhatsAppCommunity />
       <Footer />
     </main>
   );

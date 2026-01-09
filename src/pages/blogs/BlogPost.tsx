@@ -2,6 +2,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Calendar, Clock, User, ChevronRight, BookOpen } from "lucide-react";
 import Header from "@/components/Header";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import { getBlogContent, getRelatedPosts, blogPosts } from "@/data/blogPosts";
@@ -372,6 +373,7 @@ const BlogPost = () => {
         </div>
       </section>
 
+      <WhatsAppCommunity />
       <Footer />
     </main>
   );

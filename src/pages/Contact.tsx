@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import Header from "@/components/Header";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 
 const Contact = () => {
@@ -359,6 +360,7 @@ const handleSubmit = async (e: React.FormEvent) => {
         </div>
       </section>
 
+      <WhatsAppCommunity />
       <Footer />
     </main>
   );

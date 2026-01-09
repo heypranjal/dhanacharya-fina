@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { AlertTriangle, FileCheck, TrendingUp, Check } from "lucide-react";
 import Header from "@/components/Header";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 
 const riskAdvisoryItems = [
@@ -251,6 +252,7 @@ const AuditingAssurance = () => {
         </div>
       </section>
 
+      <WhatsAppCommunity />
       <Footer />
     </main>
   );

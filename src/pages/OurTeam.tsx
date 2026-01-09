@@ -2,6 +2,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { Users, Award, Briefcase, Scale, Music, Trophy, ChevronDown, ChevronUp } from "lucide-react";
 import Header from "@/components/Header";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 
 interface TeamMember {
@@ -569,6 +570,7 @@ const OurTeam = () => {
         </div>
       </section>
 
+      <WhatsAppCommunity />
       <Footer />
     </main>
   );

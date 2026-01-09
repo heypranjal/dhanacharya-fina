@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { BookOpen, Building, Calendar, Receipt, ChevronRight, Check } from "lucide-react";
 import Header from "@/components/Header";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 
 const bookKeepingItems = [
@@ -365,6 +366,7 @@ const RegulatoryCompliance = () => {
         </div>
       </section>
 
+      <WhatsAppCommunity />
       <Footer />
     </main>
   );

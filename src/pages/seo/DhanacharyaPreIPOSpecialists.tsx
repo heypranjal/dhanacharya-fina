@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Shield, Award, Users, TrendingUp, CheckCircle, Building2, Phone, Mail, MapPin, Star } from "lucide-react";
 import Header from "@/components/Header";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 
@@ -459,6 +460,7 @@ const DhanacharyaPreIPOSpecialists = () => {
         </section>
       </main>
 
+      <WhatsAppCommunity />
       <Footer />
     </>
   );

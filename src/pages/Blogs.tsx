@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { Calendar, Clock, ArrowRight, User, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 import { blogPosts, getPillarPost, clusterLabels } from "@/data/blogPosts";
 import { BlogPost } from "@/types/blog";
@@ -288,6 +289,7 @@ const Blogs = () => {
         </div>
       </section>
 
+      <WhatsAppCommunity />
       <Footer />
     </main>
   );

@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState, useMemo } from "react";
 import { Calculator as CalculatorIcon, TrendingUp, Wallet, PiggyBank } from "lucide-react";
 import Header from "@/components/Header";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
@@ -422,6 +423,7 @@ const Calculator = () => {
         </div>
       </section>
 
+      <WhatsAppCommunity />
       <Footer />
     </main>
   );

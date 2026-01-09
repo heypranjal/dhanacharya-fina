@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 
 const WhatWeDo = () => {
@@ -271,6 +272,7 @@ const WhatWeDo = () => {
         </div>
       </section>
 
+      <WhatsAppCommunity />
       <Footer />
     </main>
   );

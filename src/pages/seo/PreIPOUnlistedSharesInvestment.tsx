@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, TrendingUp, Shield, Users, FileCheck, AlertTriangle, CheckCircle, Building2, Landmark, Scale } from "lucide-react";
 import Header from "@/components/Header";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 
@@ -704,6 +705,7 @@ const PreIPOUnlistedSharesInvestment = () => {
         </section>
       </main>
 
+      <WhatsAppCommunity />
       <Footer />
     </>
   );

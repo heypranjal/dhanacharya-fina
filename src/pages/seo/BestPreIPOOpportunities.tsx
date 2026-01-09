@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, TrendingUp, CheckCircle, AlertTriangle, Building2, BarChart3, Target, Shield, Star } from "lucide-react";
 import Header from "@/components/Header";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 
@@ -455,6 +456,7 @@ const BestPreIPOOpportunities = () => {
         </section>
       </main>
 
+      <WhatsAppCommunity />
       <Footer />
     </>
   );

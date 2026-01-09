@@ -24,6 +24,7 @@ import Blogs from "./pages/Blogs";
 import BlogPost from "./pages/blogs/BlogPost";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 // SEO Pages - Pre-IPO & Unlisted Shares
 import PreIPOUnlistedSharesInvestment from "./pages/seo/PreIPOUnlistedSharesInvestment";
@@ -82,6 +83,7 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <WhatsAppButton />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

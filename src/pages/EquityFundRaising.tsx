@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 
 const EquityFundRaising = () => {
@@ -508,6 +509,7 @@ const EquityFundRaising = () => {
         </div>
       </section>
 
+      <WhatsAppCommunity />
       <Footer />
     </main>
   );

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle, FileText, CreditCard, Shield, AlertTriangle, Building2, Users } from "lucide-react";
 import Header from "@/components/Header";
+import WhatsAppCommunity from "@/components/WhatsAppCommunity";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 
@@ -516,6 +517,7 @@ const HowToBuyPreIPOShares = () => {
         </section>
       </main>
 
+      <WhatsAppCommunity />
       <Footer />
     </>
   );
