@@ -2,9 +2,9 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
 const stats = [
-  { value: 200, suffix: "+", label: "Client Base" },
-  { value: 100, suffix: "+", label: "Startups" },
-  { value: 500, suffix: "+ Cr.", label: "Securities Changed Hands through Dhanacharya" },
+  { value: 200, suffix: "+", label: "Client Base", prefix: "" },
+  { value: 100, suffix: "+", label: "Startups", prefix: "" },
+  { value: 500, suffix: "+ Cr.", label: "Securities Changed Hands through Dhanacharya", prefix: "₹" },
 ];
 
 const features = [
@@ -49,10 +49,12 @@ const features = [
 const AnimatedNumber = ({
   value,
   suffix,
+  prefix,
   isInView,
 }: {
   value: number;
   suffix: string;
+  prefix: string;
   isInView: boolean;
 }) => {
   const [displayValue, setDisplayValue] = useState(0);
@@ -84,7 +86,7 @@ const AnimatedNumber = ({
 
   return (
     <span className="tabular-nums">
-      {displayValue.toLocaleString()}
+      {prefix}{displayValue.toLocaleString()}
       {suffix}
     </span>
   );
@@ -186,7 +188,7 @@ const WhyChooseUs = () => {
                   className="relative p-3 sm:p-4 lg:p-6 border border-secondary-foreground/10 rounded-lg bg-secondary/30 backdrop-blur-sm hover:border-primary/30 hover:bg-secondary/50 transition-all duration-300 cursor-pointer"
                 >
                   <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-heading font-bold text-secondary-foreground mb-1 sm:mb-2 text-center">
-                    <AnimatedNumber value={stat.value} suffix={stat.suffix} isInView={isInView} />
+                    <AnimatedNumber value={stat.value} suffix={stat.suffix} prefix={stat.prefix} isInView={isInView} />
                   </h3>
                   <p className="text-primary text-center font-medium text-xs sm:text-sm lg:text-base">
                     {stat.label}

@@ -5,7 +5,7 @@ import { Users, BarChart3, Rocket } from "lucide-react";
 const stats = [
   { icon: Users, value: 200, suffix: "+", label: "Client Base", prefix: "" },
   { icon: Rocket, value: 100, suffix: "+", label: "Startups", prefix: "" },
-  { icon: BarChart3, value: 500, suffix: "+ Cr.", label: "Securities Changed Hands", prefix: "" },
+  { icon: BarChart3, value: 500, suffix: "+ Cr.", label: "Securities Changed Hands", prefix: "₹" },
 ];
 
 const AnimatedNumber = ({ value, suffix, prefix }: { value: number; suffix: string; prefix: string }) => {

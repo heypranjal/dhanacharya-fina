@@ -7,7 +7,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 );
 
 const WhatsAppButton = () => {
-  const whatsappLink = "https://chat.whatsapp.com/Fsdo1Bxw7XUEq1ATO53izn";
+  const whatsappLink = "https://wa.me/919211822583?text=Hello!%20I%20would%20like%20to%20know%20more%20about%20your%20financial%20services.";
 
   return (
     <motion.a
@@ -20,7 +20,7 @@ const WhatsAppButton = () => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       className="fixed bottom-6 right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 bg-[#25D366] hover:bg-[#20BD5A] rounded-full flex items-center justify-center shadow-lg transition-colors"
-      aria-label="Join WhatsApp Community"
+      aria-label="Chat on WhatsApp"
     >
       {/* Pulse animation ring */}
       <span className="absolute w-full h-full rounded-full bg-[#25D366] animate-ping opacity-25" />
