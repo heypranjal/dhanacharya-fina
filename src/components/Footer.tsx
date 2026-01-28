@@ -113,7 +113,7 @@ const Footer = () => {
             >
               <img
                 src="https://res.cloudinary.com/dadfpmrat/image/upload/v1766126485/Artboard_10_maqdxl.png"
-                alt="Dhanacharya Financial Advisors"
+                alt="Dhanacharya Advisors"
                 className="h-56 sm:h-64 w-auto object-contain"
               />
             </motion.div>
@@ -330,7 +330,7 @@ const Footer = () => {
             className="text-secondary-foreground/60 text-xs sm:text-sm"
             whileHover={{ scale: 1.02 }}
           >
-            © {currentYear} Dhanacharya Financial Advisors. All rights reserved.
+            © {currentYear} Dhanacharya Advisors. All rights reserved.
           </motion.p>
         </motion.div>
       </div>

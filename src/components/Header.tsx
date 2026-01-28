@@ -98,7 +98,7 @@ const Header = () => {
             <Link to="/" className="flex items-center">
               <img
                 src="https://res.cloudinary.com/dadfpmrat/image/upload/v1766126485/Artboard_10_maqdxl.png"
-                alt="Dhanacharya Financial Advisors"
+                alt="Dhanacharya Advisors"
                 className="h-64 w-auto object-contain"
               />
             </Link>
