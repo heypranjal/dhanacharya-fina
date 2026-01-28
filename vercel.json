@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/stock-recommendation",
+      "destination": "/",
+      "statusCode": 410
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
